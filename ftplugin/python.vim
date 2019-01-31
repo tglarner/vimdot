@@ -40,6 +40,9 @@ let g:ale_python_pylint_options = '--disable no-else-return'
 
 let g:ale_lint_on_text_changed = 'never'
 
+" Keymaps to jump to next/prev warning/error
+nmap <silent> <leader>an :ALENext<cr>
+nmap <silent> <leader>aN :ALEPrevious<cr>
 
 "" Jedi:
 let g:jedi#use_tabs_not_buffers = 1
