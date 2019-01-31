@@ -1,3 +1,8 @@
+"" Note:
+"" Using anaconda can lead to conflits because vim uses system python per
+"" default when started from desktop or nautilus.
+"" Check python exec per :!which python if errors occur.
+
 "" Set specific presets for python
 autocmd Filetype python set
     \ tabstop=4
@@ -7,18 +12,15 @@ autocmd Filetype python set
     \ autoindent
     \ fileformat=unix
 
-nmap <silent> <F2> :TestVisit<cr>
-nmap <silent> <F3> :TestFile<cr>
-" nmap <silent> <F4> :TestSuite<cr>
+"" use ytest mapping for vim-test
 nmap <silent> <F4> :! clear && pytest .<cr>
-
 
 "" automatically set a breakpoint in front of the current line with F8
 nmap <silent> <F8> Obreakpoint()<Esc>:w <cr>
 "" delete all breakpoints in file
 nmap <silent> <F9> :g/^\s*breakpoint()$/norm dd<Esc>:noh <cr>
 
-"" python-specific plugin configuration ---------------------------------------
+"" PLUGIN config ##############################################################
 "" ALE:
 let g:ale_linters = {'python': ['pycodestyle', 'pydocstyle', 'pylint']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}

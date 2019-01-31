@@ -42,30 +42,23 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-"Supprot CamelCase and snake_case motion objects
-Plug 'bkad/CamelCaseMotion'
-
-"Set working dir to project root
-Plug 'airblade/vim-rooter'
-
-"Easy management of ctags
-"" Don't forget to modify the PATH variable
-"" if the ctags plugins shall work with universal ctags
-Plug 'xolox/vim-misc'
-""Plug 'xolox/vim-easytags'    " original does not work with universal-ctags
-""Plug 'tglarner/vim-easytags'
-
-"Tagbar displaying ctags content
-"Plug 'majutsushi/tagbar'
-
 "git integration
 Plug 'tpope/vim-fugitive'
 
-"" syntastic: Syntax checker for vim (Use ALE instead!)
-"" note: Check env activation if the syntax checker for python malfunctions
-"Plug 'vim-syntastic/syntastic'
+"Support CamelCase and snake_case motion objects
+" uses <leader>w as subword movement and  allows all parts of
+" ThisIdentifierTypicalForJava or this_function_name to be navigatable.
+Plug 'bkad/CamelCaseMotion'
 
-"Python IDE environment (Does not work currently)
+""Set working dir to project root
+"" Automatically switches to the next toplevel dir that contains a .git dir
+"" when in a project but can be configured to look e.g. for Makefile, etc...
+Plug 'airblade/vim-rooter'
+
+"" vim-test: Run your tests at the speed of thought
+Plug 'janko-m/vim-test'
+
+"Python IDE environment (Does not work currently!)
 "Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 "" Indent objects just right for python
@@ -77,14 +70,9 @@ Plug 'w0rp/ale'
 "" Jedi: Static code analysis, goto  and autocompletion for python
 Plug 'davidhalter/jedi-vim'
 
-"" vim-test: Run your tests at the speed of thought
-Plug 'janko-m/vim-test'
-
-Plug 'JamshedVesuna/vim-markdown-preview'
-
 call plug#end()
 
-"" END VIM-Plug ##########################################################
+"" Set environment behavior ###################################################
 
 "" Do not show any line of minimized windows
 set wmh=0
@@ -131,7 +119,6 @@ augroup numbertoggle
     autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
-
 "" Always show the name of the file being edited.
 set ls=2
 
@@ -143,19 +130,6 @@ set nostartofline
 
 "" Show matching braces.
 set showmatch
-
-"" remove trailing whitespace before saving
-function! DeleteTrailingWS()
-  let l = 1
-  for line in getline(1,"$")
-      call setline(l, substitute(line, '\s\+$', '', "g"))
-      let l = l + 1
-  endfor
-  %s/\s\+$//e
-endfunction
-
-"" But DO Not do this for markdown since three spaces are a linebreak here.
-autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 
 "" listchars sets replacements for normally invisible characters in list mode
 "" set listchars=eol:$,extends: ,trail: ,tab: >
@@ -192,20 +166,7 @@ let g:tex_flavor='latex'
 "" Set ctags source for c(pp) projects
 set tags=./.tags;
 
-" create nice status line
-function! HasFugitive()
-  return exists('g:loaded_fugitive')&&fugitive#statusline()!=''
-endfunction
-
-set laststatus=2
-"" add file information
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]
-"" add git Branch if fugitive is there
-set statusline+=\ [BRANCH=%{HasFugitive()?fugitive#statusline():'NONE'}]
-"" add column and line number info
-set statusline+=%=[%3v,\ %5l\ /\ %5L\ (%3p%%)]
-hi StatusLine term=reverse ctermfg=0 ctermbg=2
-
+"" Usefull commands and functions #############################################
 "" CDC = Change to directory of current file and print destination
 command! CDC cd %:p:h
 
@@ -223,6 +184,38 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
+"" remove trailing whitespace before saving
+function! DeleteTrailingWS()
+  let l = 1
+  for line in getline(1,"$")
+      call setline(l, substitute(line, '\s\+$', '', "g"))
+      let l = l + 1
+  endfor
+  %s/\s\+$//e
+endfunction
+
+"" But DO Not do this for markdown since three spaces are a linebreak here.
+autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
+
+"" create nice status line ####################################################
+function! HasFugitive()
+  return exists('g:loaded_fugitive')&&fugitive#statusline()!=''
+endfunction
+
+set laststatus=2
+"" add file information
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]
+"" add git Branch if fugitive is there
+set statusline+=\ [BRANCH=%{HasFugitive()?fugitive#statusline():'NONE'}]
+"" add column and line number info
+set statusline+=%=[%3v,\ %5l\ /\ %5L\ (%3p%%)]
+hi StatusLine term=reverse ctermfg=0 ctermbg=2
+
+"" keyboard mappings ##########################################################
+"" Remap leader to space (Note: This affects MANY mappings!)
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
+
 "" Cycling through Windows quicker.
 map <C-M> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -231,47 +224,17 @@ map <A-Up>    <C-W><Up><C-W>_
 map <A-Left>  <C-W><Left><C-W>|
 map <A-Right> <C-W><Right><C-W>|
 
-"" Remap leader to space
-nnoremap <Space> <Nop>
-let mapleader = "\<Space>"
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
+" Allow saving of files as sudo when forgotten to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-"" Update python ctags
-"" PLUGIN config ############################################################
+"" PLUGIN-specific config and key mappings ####################################
+"" Note: python-specific config is in ftplugin/python.vim
+
 "" NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
   \ !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-"" Tagbar
-"" map <F8> :TagbarToggle<CR>
-
-"" CamelCaseMotion
-call camelcasemotion#CreateMotionMappings('<leader>')
-
-"" vim-rooter: Switch to file directory for non-project files
-let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_silent_chdir = 1
-let g:rooter_use_lcd = 1
-let g:rooter_patterns = ['Makefile', '.git/']
-
-
-" vim-markdown-preview
-let g:vim_markdown_preview_perl = 1
-
-
-" easytags
-" let g:easytags_cmd = '/home/tglarner/bin/ctags'
-" let g:easytags_opts = ['--options=$HOME/.vim/ctags/']
-" let g:easytags_by_filetype = '$HOME/.vim/tags'
-" let g:easytags_asnc = 1
-" let g:easytags_on_cursorhold = 0
-" let g:easytags_suppress_report = 1
-" let g:easytags_event = ['BufWritePost']
-
 
 " vim-fugitive
 nmap <leader>gb :Gblame<cr>
@@ -285,3 +248,17 @@ nmap <leader>ge :Gedit
 nmap <leader>gm :Gmove
 nmap <leader>gr :Gread
 nmap <leader>gw :Gwrite
+
+"" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+"" vim-rooter: Switch to file directory for non-project files
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_silent_chdir = 1
+let g:rooter_use_lcd = 1
+let g:rooter_patterns = ['Makefile', '.git/']
+
+"" vim-test
+nmap <silent> <F2> :TestVisit<cr>
+nmap <silent> <F3> :TestFile<cr>
+nmap <silent> <F4> :TestSuite<cr>
