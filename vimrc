@@ -5,21 +5,81 @@ if has("autocmd")
   filetype plugin on
 endif
 
+"" VIM-PLUG ##############################################################
+"" add plugins with vim-plug
+"" VimPlug needs to be manually downloaded from
+"" https://github.com/junegunn/vim-plug
+"" and placed in ~/.vim/autoload in order to work.
+call plug#begin('~/.vim/plugged')
+
+"" Molokai Colorscheme
+Plug 'tomasr/molokai'
+
+"" Set working dir to project root
+""  Automatically switches to the next toplevel dir that contains a .git dir
+""  when in a project but can be configured to look e.g. for Makefile, etc...
+Plug 'airblade/vim-rooter'
+
+"" NERDTree with git status flags
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+"" git integration
+Plug 'tpope/vim-fugitive'
+
+"" vim-test: Run your tests at the speed of thought
+Plug 'janko-m/vim-test'
+
+"" ALE: Asynchronous Lint Engine -> Syntax and style checks
+Plug 'w0rp/ale'
+
+"" Jedi: Static code analysis, goto  and autocompletion for python
+Plug 'davidhalter/jedi-vim'
+
+""  LaTeX mode
+Plug 'lervag/vimtex'
+
+"" Mapping plugins ------------------------------------------------------------
+
+""" Repeat the last compound mapping with . operator
+""  This is useful for plugin mappings and user-defined mappings
+Plug 'tpope/vim-repeat'
+
+"" Easily modify surroundings: parens, braces, brackets, quotes, tags
+""  This provides the verbs cs, ds, ys (change, delete, yank surrounding)
+""  and the noun (text object) t for tag
+Plug 'tpope/vim-surround'
+
+"" Easily comment out lines with keymapping
+Plug 'tpope/vim-commentary'
+
+"" Support CamelCase and snake_case motion objects
+""  uses <leader>w as subword noun and allows all parts of
+""  ThisIdentifierTypicalForJava or this_function_name to be navigatable.
+Plug 'bkad/CamelCaseMotion'
+
+"" Indent objects just right for python
+""  provides ii, ai, iI, aI text objects for Indentations
+Plug 'michaeljsmith/vim-indent-object'
+
+call plug#end()
+
+"" Set environment behavior ###################################################
+
 "" Syntax highlighting, but only for color terminals.
 if &t_Co > 1
   syntax enable
+  set background=dark
+  colorscheme molokai
 endif
 
 " set appropriate color schemes
 if has("gui_running")
-  colorscheme slate
   set guifont=Monospace\ Regular\ 12
   set guifontwide=
   set go=agimrLtT
   "" No blinking cursor in gvim please.
   set guicursor=a:blinkon0
-else
-  colorscheme industry
 endif
 
 "no need to be compatible with vi and lose features.
@@ -31,124 +91,41 @@ set updatetime=750
 "" After this many msecs do not imap.
 set timeoutlen=500
 
-"" VIM-PLUG ##############################################################
-"" add plugins with vim-plug
-"" VimPlug needs to be manually downloaded from
-"" https://github.com/junegunn/vim-plug
-"" and placed in ~/.vim/autoload in order to work.
-call plug#begin('~/.vim/plugged')
-
-"NERDTree with git status flags
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-"git integration
-Plug 'tpope/vim-fugitive'
-
-"Support CamelCase and snake_case motion objects
-" uses <leader>w as subword movement and  allows all parts of
-" ThisIdentifierTypicalForJava or this_function_name to be navigatable.
-Plug 'bkad/CamelCaseMotion'
-
-""Set working dir to project root
-"" Automatically switches to the next toplevel dir that contains a .git dir
-"" when in a project but can be configured to look e.g. for Makefile, etc...
-Plug 'airblade/vim-rooter'
-
-"" vim-test: Run your tests at the speed of thought
-Plug 'janko-m/vim-test'
-
-"Python IDE environment (Does not work currently!)
-"Plug 'python-mode/python-mode', { 'branch': 'develop' }
-
-"" Indent objects just right for python
-Plug 'michaeljsmith/vim-indent-object'
-
-"" ALE: Asynchronous Lint Engine -> Syntax and style checks
-Plug 'w0rp/ale'
-
-"" Jedi: Static code analysis, goto  and autocompletion for python
-Plug 'davidhalter/jedi-vim'
-
-call plug#end()
-
-"" Set environment behavior ###################################################
-
-"" Do not show any line of minimized windows
-set wmh=0
-
-"" Natural splits
-set splitbelow
-set splitright
-
-"" Disable any swap and backup files
-set noswapfile
-set nobackup
-set nowb
-
-" show command info (e.g. leader key)
-set showcmd
-
-" nicer search
-set hlsearch
-set incsearch
-set ignorecase
-
-"Adjust colors to be readable on a dark background
-set background=dark
-
-"" Set text width to 80, this implies word wrap.
-set textwidth=80
-
-"" Do not break long lines.
-set nowrap
-
-"" Highlight column 80 to light grey
-set colorcolumn=80
+set wmh=0                         "" Do not show any line of minimized windows
+set splitbelow splitright         "" Natural splits
+set noswapfile nobackup nowb      "" Disable any swap and backup files
+set showcmd                       " show command info (e.g. leader key)
+set hlsearch incsearch ignorecase " nicer search
+set background=dark               " color adjust for dark background
+set textwidth=80                  "" static text width inc. static wrap
+set nowrap                        "" Do not break long lines.
+set number relativenumber         "" Show hybrid line numbers.
+set ls=2                          "" Always show d$filename edited.
+set showmode                      "" Show the mode (insert,replace,etc.)
+set nostartofline                 "" Keep horz cursor pos for vert. movement.
+set showmatch                     "" Show matching braces.
+set wildmode=longest,list,full    "" Switch to better tab completion
+set wildmenu
+set autoindent                    "" Automatic indenting.
+set expandtab shiftwidth=2
+set softtabstop=2
+set colorcolumn=80                "" Highlight column 80 to light grey
 hi ColorColumn ctermbg=235 guibg=#D0D0D0
 
-"" Show hybrid line numbers.
-set number relativenumber
 
 "" Switch to absolute line number if in insert mode, out-of-focus
 "" or if the buffer is left e.g. by switching windows
 "" Source: https://jeffkreeftmeijer.com/vim-number/
+let toggle_ignore = ['nerdtree']
 augroup numbertoggle
     autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave *
+          \ if index(toggle_ignore, &ft) < 0 |set relativenumber|endif
+    autocmd BufLeave,FocusLost,InsertEnter *
+          \ if index(toggle_ignore, &ft) < 0 |set norelativenumber|endif
 augroup END
 
-"" Always show the name of the file being edited.
-set ls=2
-
-"" Show the mode (insert,replace,etc.)
-set showmode
-
-"" Keep the horizontal cursor position when moving vertically.
-set nostartofline
-
-"" Show matching braces.
-set showmatch
-
-"" listchars sets replacements for normally invisible characters in list mode
-"" set listchars=eol:$,extends: ,trail: ,tab: >
-
-"" Switch to better tab completion
-set wildmode=longest,list,full
-set wildmenu
-
-"" Automatic C-style indenting.
-set autoindent
-"" Smart indentation
-set smartindent
-
-"" When inserting tabs replace them with the appropriate number of spaces
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
-"This is for setting Makefiles with tabs not spaces
+"" Makefiles use tabs instead of spaces
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 "" git commit messages:
@@ -161,12 +138,8 @@ let g:tex_flavor='latex'
 "     \ shiftwidth=2
 "     \ expandtab
 "     \ autoindent
-"" autocmd Filetype python match BadWhitespace /\s\+$/
 
-"" Set ctags source for c(pp) projects
-set tags=./.tags;
-
-"" Usefull commands and functions #############################################
+"" Useful commands and functions #############################################
 "" CDC = Change to directory of current file and print destination
 command! CDC cd %:p:h
 
@@ -230,11 +203,16 @@ cmap w!! w !sudo tee > /dev/null %
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: python-specific config is in ftplugin/python.vim
 
+"" Molokai colorscheme
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 "" NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
   \ !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd FileType nerdtree set nonumber norelativenumber
 
 " vim-fugitive
 nmap <leader>gb :Gblame<cr>
