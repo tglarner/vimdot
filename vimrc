@@ -77,15 +77,6 @@ if &t_Co > 1
   colorscheme molokai
 endif
 
-" set appropriate color schemes
-if has("gui_running")
-  set guifont=Monospace\ Regular\ 12
-  set guifontwide=
-  set go=agimrLtT
-  "" No blinking cursor in gvim please.
-  set guicursor=a:blinkon0
-endif
-
 "no need to be compatible with vi and lose features.
 set nocompatible
 
