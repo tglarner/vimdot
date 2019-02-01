@@ -12,8 +12,8 @@ endif
 "" and placed in ~/.vim/autoload in order to work.
 call plug#begin('~/.vim/plugged')
 
-"" Molokai Colorscheme
-Plug 'tomasr/molokai'
+"" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
+Plug 'tglarner/molokai'
 
 "" Set working dir to project root
 ""  Automatically switches to the next toplevel dir that contains a .git dir
