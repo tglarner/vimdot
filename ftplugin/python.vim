@@ -32,8 +32,9 @@ let g:ale_python_pydocstyle_executable = 'pydocstyle'
 let g:ale_python_pylint_executable = 'pylint'
 let g:ale_python_autopep8_executable = 'autopep8'
 let g:ale_python_isort_executable = 'isort'
-let g:ale_python_pylint_options = '--disable no-else-return'
+let g:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
+
 
 " Keymaps to jump to next/prev warning/error
 nmap <silent> <leader>an :ALENext<cr>
