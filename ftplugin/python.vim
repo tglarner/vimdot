@@ -4,7 +4,6 @@
 "" Check python exec per :!which python if errors occur.
 
 "" Set specific presets for python
-autocmd Filetype python set
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
