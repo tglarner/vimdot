@@ -69,7 +69,11 @@ call plug#end()
 "" Syntax highlighting, but only for color terminals.
 if &t_Co > 1
   syntax enable
-  set background=dark
+  "" Molokai colorscheme
+  ""  Note: The variables have to be set before setting the colorscheme
+  ""        to take effect
+  let g:molokai_original = 1
+  let g:rehash256 = 1
   colorscheme molokai
 endif
 
@@ -96,7 +100,6 @@ set splitbelow splitright         "" Natural splits
 set noswapfile nobackup nowb      "" Disable any swap and backup files
 set showcmd                       " show command info (e.g. leader key)
 set hlsearch incsearch ignorecase " nicer search
-set background=dark               " color adjust for dark background
 set textwidth=80                  "" static text width inc. static wrap
 set nowrap                        "" Do not break long lines.
 set number relativenumber         "" Show hybrid line numbers.
@@ -111,6 +114,8 @@ set expandtab shiftwidth=2
 set softtabstop=2
 set colorcolumn=80                "" Highlight column 80 to light grey
 hi ColorColumn ctermbg=235 guibg=#D0D0D0
+hi Normal ctermbg=none
+hi NonText ctermbg=none
 
 
 "" Switch to absolute line number if in insert mode, out-of-focus
@@ -202,10 +207,6 @@ cmap w!! w !sudo tee > /dev/null %
 
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: python-specific config is in ftplugin/python.vim
-
-"" Molokai colorscheme
-let g:molokai_original = 1
-let g:rehash256 = 1
 
 "" NERDTree
 map <C-n> :NERDTreeToggle<CR>
