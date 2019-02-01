@@ -34,10 +34,10 @@ Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 
 "" Jedi: Static code analysis, goto  and autocompletion for python
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 ""  LaTeX mode
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 
 "" Mapping plugins ------------------------------------------------------------
 
