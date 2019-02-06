@@ -5,6 +5,14 @@ if has("autocmd")
   filetype plugin on
 endif
 
+"" Set proper vim directory
+if (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+  let g:vimdir='~/vimfiles/'
+else
+  let g:vimdir='~/.vim/'
+endif
+let g:vimrc = g:vimdir.'vimrc'
+
 "" VIM-PLUG ##############################################################
 "" add plugins with vim-plug
 "" VimPlug needs to be manually downloaded from
