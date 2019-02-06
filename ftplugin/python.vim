@@ -25,7 +25,7 @@ nmap <silent> <F9> :g/^\s*breakpoint()$/norm dd<Esc>:noh <cr>
 "" PLUGIN config ##############################################################
 
 "" ALE:
-let g:ale_linters = {'python': ['pycodestyle', 'pydocstyle', 'pylint']}
+let g:ale_linters = {'python': ['pydocstyle', 'pylint']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}
 let g:ale_python_pycodestyle_executable = 'pycodestyle'
 let g:ale_python_pydocstyle_executable = 'pydocstyle'
