@@ -15,10 +15,25 @@ let g:vimrc = g:vimdir.'vimrc'
 
 "" VIM-PLUG ##############################################################
 "" add plugins with vim-plug
-"" VimPlug needs to be manually downloaded from
-"" https://github.com/junegunn/vim-plug
-"" and placed in ~/.vim/autoload in order to work.
-call plug#begin('~/.vim/plugged')
+"" Install new plugins by typing :PlugInstall after sourcing the vimrc file
+
+" Load vim-plug
+if empty(glob(g:vimdir.'autoload/plug.vim'))
+  let b:plug_github='https://raw.github.com/junegunn/vim-plug'
+  let b:plug_url=b:plug_github.'/master/plug.vim'
+  let b:plug_destination=g:vimdir.'autoload/plug.vim'
+
+  silent exec '!mkdir -p '.g:vimdir.'/autoload'
+  silent exec '!curl -fLo '.b:plug_destination.' '.b:plug_url
+  if v:shell_error
+    echo 'Automatically installing VimPlug using curl has failed.'
+    echo 'VimPlug needs to be manually downloaded from '.b:plug_github
+    echo 'and placed in '.g:vimdir.'/autoload in order to work.'
+    finish
+  endif
+endif
+
+call plug#begin(g:vimdir.'plugged')
 
 "" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
 Plug 'tglarner/molokai'
