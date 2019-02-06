@@ -155,6 +155,10 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 autocmd Filetype gitcommit setlocal spell textwidth=80
 
 "" Useful commands and functions #############################################
+
+""Source this vimrc file from wherever
+command! Sorc :exec 'source '.g:vimrc
+
 "" CDC = Change to directory of current file and print destination
 command! CDC cd %:p:h
 
