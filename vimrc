@@ -104,13 +104,14 @@ set showmatch                     "" Show matching braces.
 set wildmode=longest,list,full    "" Switch to better tab completion
 set wildmenu
 set autoindent                    "" Automatic indenting.
-set expandtab shiftwidth=2
-set softtabstop=2
+set backspace=indent,eol,start    "" Natural backspace in insert mode.
+set expandtab shiftwidth=2 softtabstop=2
+set signcolumn=yes                "" Always keep the gutter open.
+
 set colorcolumn=80                "" Highlight column 80 to light grey
-hi ColorColumn ctermbg=235 guibg=#D0D0D0
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 hi Normal ctermbg=none
 hi NonText ctermbg=none
-
 
 "" Switch to absolute line number if in insert mode, out-of-focus
 "" or if the buffer is left e.g. by switching windows
