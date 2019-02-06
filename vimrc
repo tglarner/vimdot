@@ -131,14 +131,6 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 "" git commit messages:
 autocmd Filetype gitcommit setlocal spell textwidth=80
 
-let g:tex_flavor='latex'
-" autocmd Filetype tex set
-"     \ tabstop=2
-"     \ softtabstop=2
-"     \ shiftwidth=2
-"     \ expandtab
-"     \ autoindent
-
 "" Useful commands and functions #############################################
 "" CDC = Change to directory of current file and print destination
 command! CDC cd %:p:h
@@ -239,3 +231,6 @@ let g:rooter_patterns = ['Makefile', '.git/']
 nmap <silent> <F2> :TestVisit<cr>
 nmap <silent> <F3> :TestFile<cr>
 nmap <silent> <F4> :TestSuite<cr>
+
+"" vimtex
+let g:tex_flavor='latex'
