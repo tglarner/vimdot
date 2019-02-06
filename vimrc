@@ -1,4 +1,4 @@
-" auto file type detection
+"" auto file type detection
 if has("autocmd")
   filetype on
   filetype indent on
@@ -163,7 +163,7 @@ function! DeleteTrailingWS()
   %s/\s\+$//e
 endfunction
 
-"" But DO Not do this for markdown since three spaces are a linebreak here.
+"" But DO NOT do this for markdown since three spaces are a linebreak here.
 autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 
 "" create nice status line ####################################################
@@ -197,7 +197,8 @@ map <A-Right> <C-W><Right><C-W>|
 cmap w!! w !sudo tee > /dev/null %
 
 "" PLUGIN-specific config and key mappings ####################################
-"" Note: python-specific config is in ftplugin/python.vim
+"" Note: plugin config for python-specific plugins is in ftplugin/python.vim
+
 
 "" NERDTree
 map <C-n> :NERDTreeToggle<CR>
