@@ -15,6 +15,9 @@ call plug#begin('~/.vim/plugged')
 "" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
 Plug 'tglarner/molokai'
 
+"" gruvbox colorscheme
+Plug 'morhetz/gruvbox'
+
 "" Set working dir to project root
 ""  Automatically switches to the next toplevel dir that contains a .git dir
 ""  when in a project but can be configured to look e.g. for Makefile, etc...
@@ -199,6 +202,8 @@ cmap w!! w !sudo tee > /dev/null %
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for python-specific plugins is in ftplugin/python.vim
 
+"" gruvbox colorscheme
+let g:gruvbox_contrast_dark='soft'
 
 "" NERDTree
 map <C-n> :NERDTreeToggle<CR>
