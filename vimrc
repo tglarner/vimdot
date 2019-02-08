@@ -57,7 +57,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'janko-m/vim-test'
 
 "" ALE: Asynchronous Lint Engine -> Syntax and style checks
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'for': 'python' }
 
 "" Jedi: Static code analysis, goto  and autocompletion for python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
