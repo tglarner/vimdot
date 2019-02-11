@@ -139,7 +139,7 @@ hi NonText ctermbg=none
 "" Switch to absolute line number if in insert mode, out-of-focus
 "" or if the buffer is left e.g. by switching windows
 "" Source: https://jeffkreeftmeijer.com/vim-number/
-let toggle_ignore = ['nerdtree', 'help']
+let toggle_ignore = ['nerdtree', 'help', 'fugitiveblame']
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave *
