@@ -4,11 +4,11 @@
 "" Check python exec per :!which python if errors occur.
 
 "" Set specific presets for python
+setlocal textwidth=79
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
-setlocal textwidth=80
-setlocal smarttab
+setlocal shiftround
 setlocal expandtab
 setlocal nosmartindent
 setlocal autoindent
