@@ -218,7 +218,7 @@ map <A-Left>  <C-W><Left><C-W>|
 map <A-Right> <C-W><Right><C-W>|
 
 " Allow saving of files as sudo when forgotten to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+cmap w!! w !sudo tee > /dev/null % <cr>
 
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for python-specific plugins is in ftplugin/python.vim
