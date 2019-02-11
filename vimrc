@@ -158,6 +158,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=80
 
 ""Source this vimrc file from wherever
 command! Sorc :exec 'source '.g:vimrc
+command! Edrc :exec 'tabe  '.g:vimrc
 
 "" CDC = Change to directory of current file and print destination
 command! CDC cd %:p:h
