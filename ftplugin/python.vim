@@ -52,4 +52,4 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#smart_auto_mappings = 0
 
-" let g:pymode_python = 'python3'
+"" SimplyFold
