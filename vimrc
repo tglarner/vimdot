@@ -187,6 +187,7 @@ function! InsertTabWrapper(direction)
         return "\<c-n>"
     endif
 endfunction
+
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
@@ -229,10 +230,7 @@ cmap w!! w !sudo tee > /dev/null % <cr>
 let g:gruvbox_contrast_dark='soft'
 
 "" NERDTree
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
-  \ !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <leader>N :NERDTreeToggle<CR>
 autocmd FileType nerdtree set nonumber norelativenumber
 
 " vim-fugitive
