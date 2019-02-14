@@ -61,6 +61,12 @@ Plug 'janko-m/vim-test'
 
 "" Python plugins -------------------------------------------------------------
 
+"" Improved python indenting
+Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+
+"" Improved folding
+Plug 'tmhedberg/SimpylFold', {'for': 'python' }
+
 "" ALE: Asynchronous Lint Engine -> Syntax and style checks
 Plug 'w0rp/ale', { 'for': 'python' }
 
@@ -201,6 +207,9 @@ autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 "" Remap leader to space (Note: This affects MANY mappings!)
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
+
+"" toggle fold with <leader><space>, i.e. space twice
+noremap <leader><Space> za
 
 "" Cycling through Windows quicker.
 map <C-M> <C-W>j<C-W>_

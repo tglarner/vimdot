@@ -53,3 +53,7 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#smart_auto_mappings = 0
 
 "" SimplyFold
+let g:SimpylFold_docstring_preview = 1
+
+" open all folds on fileopen:
+autocmd BufWinEnter python silent! zR
