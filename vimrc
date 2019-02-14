@@ -50,6 +50,9 @@ Plug 'airblade/vim-rooter'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+"" Powerline: Better status line
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
 "" git integration
 Plug 'tpope/vim-fugitive'
 
@@ -189,20 +192,6 @@ endfunction
 
 "" But DO NOT do this for markdown since three spaces are a linebreak here.
 autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
-
-"" create nice status line ####################################################
-function! HasFugitive()
-  return exists('g:loaded_fugitive')&&fugitive#statusline()!=''
-endfunction
-
-set laststatus=2
-"" add file information
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]
-"" add git Branch if fugitive is there
-set statusline+=\ [BRANCH=%{HasFugitive()?fugitive#statusline():'NONE'}]
-"" add column and line number info
-set statusline+=%=[%3v,\ %5l\ /\ %5L\ (%3p%%)]
-hi StatusLine term=reverse ctermfg=0 ctermbg=2
 
 "" keyboard mappings ##########################################################
 "" Remap leader to space (Note: This affects MANY mappings!)
