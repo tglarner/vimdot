@@ -144,7 +144,7 @@ set backspace=indent,eol,start    "" Natural backspace in insert mode.
 set expandtab shiftwidth=2 softtabstop=2
 set signcolumn=yes                "" Always keep the gutter open.
 
-set colorcolumn=80                "" Highlight column 80 to light grey
+set colorcolumn=80                "" Highlight column 80 to dark grey
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 hi Normal ctermbg=none
 hi NonText ctermbg=none
