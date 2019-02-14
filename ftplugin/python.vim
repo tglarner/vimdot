@@ -13,6 +13,7 @@ setlocal expandtab
 setlocal nosmartindent
 setlocal autoindent
 setlocal fileformat=unix
+setlocal encoding=utf-8
 
 "" use ytest mapping for vim-test
 nmap <silent> <F4> :! clear && pytest .<cr>
