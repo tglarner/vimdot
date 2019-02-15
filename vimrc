@@ -220,6 +220,9 @@ map <A-Up>    <C-W><Up><C-W>_
 map <A-Left>  <C-W><Left><C-W>|
 map <A-Right> <C-W><Right><C-W>|
 
+" Add newlines without insert mode.
+nmap <cr> o<Esc>
+
 " Allow saving of files as sudo when forgotten to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null % <cr>
 
