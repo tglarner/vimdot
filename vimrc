@@ -41,6 +41,9 @@ Plug 'tglarner/molokai'
 "" gruvbox colorscheme
 Plug 'morhetz/gruvbox'
 
+"" Improved grepping
+Plug 'mhinz/vim-grepper'
+
 "" Set working dir to project root
 ""  Automatically switches to the next toplevel dir that contains a .git dir
 ""  when in a project but can be configured to look e.g. for Makefile, etc...
