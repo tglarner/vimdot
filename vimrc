@@ -167,6 +167,12 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 "" git commit messages:
 autocmd Filetype gitcommit setlocal spell textwidth=80
 
+"" Map quit to normalmode q in help files
+augroup MapQuitInHelp
+    autocmd! MapQuitInHelp
+    autocmd Filetype help nnoremap <buffer> q :q!<cr>
+augroup END
+
 "" Useful commands and functions #############################################
 
 ""Source this vimrc file from wherever
