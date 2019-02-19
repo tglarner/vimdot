@@ -57,3 +57,8 @@ let g:SimpylFold_docstring_preview = 1
 
 " open all folds on fileopen:
 autocmd BufWinEnter python silent! zR
+
+" argwrap config
+nnoremap <silent> <leader>aw :ArgWrap<cr>
+let g:argwrap_tail_comma = 1
+let g:argwrap_wrap_closing_brace = 0

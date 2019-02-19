@@ -101,6 +101,9 @@ Plug 'bkad/CamelCaseMotion'
 ""  provides ii, ai, iI, aI text objects for Indentations
 Plug 'michaeljsmith/vim-indent-object'
 
+"" Wrap and unwrap function arguments, lists, dicts, etc... programmatically
+Plug 'FooSoft/vim-argwrap'
+
 call plug#end()
 
 "" Set environment behavior ###################################################
