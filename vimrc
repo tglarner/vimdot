@@ -17,7 +17,7 @@ let g:vimrc = g:vimdir.'vimrc'
 "" add plugins with vim-plug
 "" Install new plugins by typing :PlugInstall after sourcing the vimrc file
 
-" Load vim-plug
+" Download vim-plug
 if empty(glob(g:vimdir.'autoload/plug.vim'))
   let b:plug_github='https://raw.github.com/junegunn/vim-plug'
   let b:plug_url=b:plug_github.'/master/plug.vim'
