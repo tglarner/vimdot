@@ -65,7 +65,7 @@ Plug 'janko-m/vim-test'
 "" Python plugins -------------------------------------------------------------
 
 "" Improved python indenting
-Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 
 "" Improved folding
 Plug 'tmhedberg/SimpylFold', {'for': 'python' }
