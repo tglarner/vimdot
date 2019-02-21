@@ -53,9 +53,10 @@ Plug 'airblade/vim-rooter'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-"" Powerline: Better status line
-Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
+"" vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"
 "" git integration
 Plug 'tpope/vim-fugitive'
 
@@ -247,6 +248,29 @@ let g:gruvbox_contrast_dark='soft'
 "" NERDTree
 map <leader>N :NERDTreeToggle<CR>
 autocmd FileType nerdtree set nonumber norelativenumber
+
+"" airline #####################
+let g:airline_theme='molokai'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" unicode symbols
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.linenr = 'Ξ'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'P'
+let g:airline_symbols.spell = 'S'
+let g:airline_symbols.whitespace = '☲'
+
+"" ######################
 
 " vim-fugitive
 nmap <leader>gb :Gblame<cr>
