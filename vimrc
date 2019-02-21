@@ -38,9 +38,6 @@ call plug#begin(g:vimdir.'plugged')
 "" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
 Plug 'tglarner/molokai'
 
-"" gruvbox colorscheme
-Plug 'morhetz/gruvbox'
-
 "" Improved grepping
 Plug 'mhinz/vim-grepper'
 
@@ -241,9 +238,6 @@ cmap w!! w !sudo tee > /dev/null % <cr>
 
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for python-specific plugins is in ftplugin/python.vim
-
-"" gruvbox colorscheme
-let g:gruvbox_contrast_dark='soft'
 
 "" NERDTree
 map <leader>N :NERDTreeToggle<CR>
