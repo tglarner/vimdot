@@ -271,9 +271,9 @@ let g:rooter_use_lcd = 1
 let g:rooter_patterns = ['Makefile', '.git/']
 
 "" vim-test
-nmap <silent> <F2> :TestVisit<cr>
-nmap <silent> <F3> :TestFile<cr>
-nmap <silent> <F4> :TestSuite<cr>
+nmap <silent> <leader>tv :TestVisit<cr>
+nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> <leader>ts :TestSuite<cr>
 
 "" vimtex
 let g:tex_flavor='latex'

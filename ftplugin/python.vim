@@ -15,8 +15,8 @@ setlocal autoindent
 setlocal fileformat=unix
 setlocal encoding=utf-8
 
-"" use ytest mapping for vim-test
-nmap <silent> <F4> :! clear && pytest .<cr>
+"" use pytest mapping for vim-test
+nmap <silent> <leader>ts :! clear && pytest .<cr>
 
 "" automatically set a breakpoint in front of the current line with F8
 nmap <silent> <F8> Obreakpoint()<Esc>:w <cr>
