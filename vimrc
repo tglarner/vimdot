@@ -252,8 +252,8 @@ autocmd FileType nerdtree set nonumber norelativenumber
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gl :Glog<cr>
-nmap <leader>gpu :Git push
-nmap <leader>gpl :Git pull
+nmap <leader>gpu :Gpush
+nmap <leader>gpl :Gpull
 nmap <leader>gc :Gcommit
 nmap <leader>gt :Gtabedit
 nmap <leader>ge :Gedit
