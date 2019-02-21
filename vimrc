@@ -200,8 +200,8 @@ function! InsertTabWrapper(direction)
     endif
 endfunction
 
-inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
+inoremap <tab> <c-r>=InsertTabWrapper("forward")<cr>
+inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<cr>
 
 "" remove trailing whitespace before saving
 function! DeleteTrailingWS()
