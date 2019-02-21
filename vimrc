@@ -41,6 +41,10 @@ Plug 'tglarner/molokai'
 "" Improved grepping
 Plug 'mhinz/vim-grepper'
 
+"" tmux support
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'melonmanchan/vim-tmux-resizer'
+
 "" Set working dir to project root
 ""  Automatically switches to the next toplevel dir that contains a .git dir
 ""  when in a project but can be configured to look e.g. for Makefile, etc...
@@ -242,6 +246,38 @@ cmap w!! w !sudo tee > /dev/null % <cr>
 "" NERDTree
 map <leader>N :NERDTreeToggle<CR>
 autocmd FileType nerdtree set nonumber norelativenumber
+
+"" tmux stuff: This is configured to work with byobu default keybindings
+"" vim-tmux-navigator
+" Map Shift-Function key to nothing. This should fix weird behaviour when
+" working that causes vim to switch in ex mode when pressed.
+map <S-F1> <Nop>
+map <S-F2> <Nop>
+map <S-F3> <Nop>
+map <S-F4> <Nop>
+map <S-F5> <Nop>
+map <S-F6> <Nop>
+map <S-F7> <Nop>
+map <S-F8> <Nop>
+map <S-F9> <Nop>
+map <S-F10> <Nop>
+map <S-F11> <Nop>
+map <S-F12> <Nop>
+
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <S-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <S-Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <S-Up>  :TmuxNavigateUp<cr>
+nnoremap <silent> <S-Right> :TmuxNavigateRight<cr>
+nnoremap <silent> <S-F3>  :TmuxNavigatePrevious<cr>
+
+""vim-tmux-resizer
+let g:tmux_resizer_no_mappings = 0
+nnoremap <silent> <M-S-Left>  :TmuxResizeLeft<cr>
+nnoremap <silent> <M-S-Up>    :TmuxResizeUp<cr>
+nnoremap <silent> <M-S-Down>  :TmuxResizeDown<cr>
+nnoremap <silent> <M-S-Right> :TmuxResizeRight<cr>
+
 
 "" airline #####################
 let g:airline_theme='molokai'
