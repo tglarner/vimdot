@@ -109,6 +109,9 @@ Plug 'michaeljsmith/vim-indent-object'
 "" Wrap and unwrap function arguments, lists, dicts, etc... programmatically
 Plug 'FooSoft/vim-argwrap'
 
+"" Use Tab for autocompletion
+Plug 'ervandew/supertab'
+
 call plug#end()
 
 "" Set environment behavior ###################################################
@@ -193,21 +196,6 @@ command! Edrc :exec 'tabe  '.g:vimrc
 
 "" CDC = Change to directory of current file and print destination
 command! CDC cd %:p:h
-
-"" Cycle through completions with TAB (and SHIFT-TAB cycles backwards).
-function! InsertTabWrapper(direction)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    elseif "backward" == a:direction
-        return "\<c-p>"
-    else
-        return "\<c-n>"
-    endif
-endfunction
-
-inoremap <tab> <c-r>=InsertTabWrapper("forward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<cr>
 
 "" remove trailing whitespace before saving
 function! DeleteTrailingWS()
