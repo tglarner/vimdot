@@ -181,6 +181,10 @@ augroup MapQuitInHelp
     autocmd Filetype help nnoremap <buffer> q :q!<cr>
 augroup END
 
+"" Use mouse even in terminal. This is neat for split resizing.
+set ttymouse=xterm2
+set mouse=a
+
 "" Useful commands and functions #############################################
 
 ""Source this vimrc file from wherever
