@@ -223,23 +223,16 @@ endfunction
 autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 
 "" keyboard mappings ##########################################################
+
 "" Remap leader to space (Note: This affects MANY mappings!)
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
 "" toggle fold with <leader><space>, i.e. space twice
-noremap <leader><Space> za
-
-"" Cycling through Windows quicker.
-map <C-M> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <A-Down>  <C-W><Down><C-W>_
-map <A-Up>    <C-W><Up><C-W>_
-map <A-Left>  <C-W><Left><C-W>|
-map <A-Right> <C-W><Right><C-W>|
+nnoremap <leader><Space> za
 
 " Add newlines without insert mode.
-nmap <cr> o<Esc>
+nnoremap <leader><cr> o<Esc>
 
 " Allow saving of files as sudo when forgotten to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null % <cr>
