@@ -248,6 +248,18 @@ map <S-F9> <Nop>
 map <S-F10> <Nop>
 map <S-F11> <Nop>
 map <S-F12> <Nop>
+map <S-M-F1> <Nop>
+map <S-M-F2> <Nop>
+map <S-M-F3> <Nop>
+map <S-M-F4> <Nop>
+map <S-M-F5> <Nop>
+map <S-M-F6> <Nop>
+map <S-M-F7> <Nop>
+map <S-M-F8> <Nop>
+map <S-M-F9> <Nop>
+map <S-M-F10> <Nop>
+map <S-M-F11> <Nop>
+map <S-M-F12> <Nop>
 
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <S-Left> :TmuxNavigateLeft<cr>
