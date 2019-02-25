@@ -56,13 +56,17 @@ let g:ale_python_autopep8_executable = 'autopep8'
 let g:ale_python_isort_executable = 'isort'
 let g:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_echo_msg_format = '[%linter%] %s'
 
+"" Python-specific airline config
+let g:airline#extensions#ale#enabled = 1
 
 " Keymaps to jump to next/prev warning/error
 nmap <silent> <leader>an :ALENext<cr>
 nmap <silent> <leader>aN :ALEPrevious<cr>
 
 "" Jedi:
+let g:jedi#force_py_version = 3
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
