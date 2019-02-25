@@ -71,13 +71,16 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
+"" disable annoying auto-completion of import in 'from ... import',
+"" often resulting in 'from ... import import' due to muscle memory.
 let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 2
 
 "" SimplyFold
 let g:SimpylFold_docstring_preview = 1
 
 " open all folds on fileopen:
-autocmd BufWinEnter python silent! zR
+autocmd BufWinEnter *.py silent! zR
 
 " argwrap config
 nnoremap <silent> <leader>aw :ArgWrap<cr>

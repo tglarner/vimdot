@@ -145,7 +145,7 @@ set textwidth=80                  "" static text width inc. static wrap
 set nowrap                        "" Do not break long lines.
 set number relativenumber         "" Show hybrid line numbers.
 set ls=2                          "" Always show d$filename edited.
-set showmode                      "" Show the mode (insert,replace,etc.)
+set noshowmode                    "" Not needed with airline: Don't show mode.
 set nostartofline                 "" Keep horz cursor pos for vert. movement.
 set showmatch                     "" Show matching braces.
 set wildmode=longest,list,full    "" Switch to better tab completion
