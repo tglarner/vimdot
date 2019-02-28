@@ -92,6 +92,9 @@ Plug 'bkad/CamelCaseMotion'
 ""  provides ii, ai, iI, aI text objects for Indentations
 Plug 'michaeljsmith/vim-indent-object'
 
+"" User-defined text objects. Dependency of vim-textobj-python below.
+Plug 'kana/vim-textobj-user'
+
 "" Wrap and unwrap function arguments, lists, dicts, etc... programmatically
 Plug 'FooSoft/vim-argwrap'
 
@@ -102,6 +105,9 @@ Plug 'ervandew/supertab'
 
 "" Improved python indenting
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+
+"" Text objects for python functions (af, if) and classes (ac, ic)
+Plug 'bps/vim-textobj-python', {'for': 'python' }
 
 "" Improved folding
 Plug 'tmhedberg/SimpylFold', {'for': 'python' }
