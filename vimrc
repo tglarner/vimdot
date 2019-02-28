@@ -64,20 +64,6 @@ Plug 'tpope/vim-fugitive'
 "" vim-test: Run your tests at the speed of thought
 Plug 'janko-m/vim-test'
 
-"" Python plugins -------------------------------------------------------------
-
-"" Improved python indenting
-Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
-
-"" Improved folding
-Plug 'tmhedberg/SimpylFold', {'for': 'python' }
-
-"" ALE: Asynchronous Lint Engine -> Syntax and style checks
-Plug 'w0rp/ale', { 'for': 'python' }
-
-"" Jedi: Static code analysis, goto  and autocompletion for python
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-
 "" LaTeX plugins --------------------------------------------------------------
 
 ""  LaTeX mode
@@ -111,6 +97,20 @@ Plug 'FooSoft/vim-argwrap'
 
 "" Use Tab for autocompletion
 Plug 'ervandew/supertab'
+
+"" Python plugins -------------------------------------------------------------
+
+"" Improved python indenting
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+
+"" Improved folding
+Plug 'tmhedberg/SimpylFold', {'for': 'python' }
+
+"" ALE: Asynchronous Lint Engine -> Syntax and style checks
+Plug 'w0rp/ale', { 'for': 'python' }
+
+"" Jedi: Static code analysis, goto  and autocompletion for python
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 call plug#end()
 
