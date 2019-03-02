@@ -49,14 +49,8 @@ noremap <leader>bd :exec python#DelBreakpointLine() <bar> noh<cr>
 "" ALE:
 let g:ale_linters = {'python': ['pydocstyle', 'pylint']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}
-let g:ale_python_pycodestyle_executable = 'pycodestyle'
-let g:ale_python_pydocstyle_executable = 'pydocstyle'
-let g:ale_python_pylint_executable = 'pylint'
-let g:ale_python_autopep8_executable = 'autopep8'
-let g:ale_python_isort_executable = 'isort'
 let g:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_echo_msg_format = '[%linter%] %s'
 
 "" Python-specific airline config
 let g:airline#extensions#ale#enabled = 1
