@@ -18,32 +18,9 @@ setlocal encoding=utf-8
 "" use pytest mapping for vim-test
 nmap <silent> <leader>ts :! clear && pytest .<cr>
 
-"" automatically set a breakpoint in front of the current line with F8
-function! python#BreakpointLine()
-  let python_version = split(system('python --version'))[1]
-  if split(python_version, '\.')[1] >= 7
-    let breakpoint_line = 'breakpoint()'
-  else
-    "" python 3.6.X has no breakpoint() builtin
-    let breakpoint_cmd = $PYTHONBREAKPOINT
-    if ''.breakpoint_cmd == ''
-      let breakpoint_line = 'import pdb; pdb.set_trace()'
-    else
-      let debugger_lib = 'import '.split(breakpoint_cmd, '\.')[0]
-      let breakpoint_line = ''.debugger_lib.'; '.breakpoint_cmd.'()'
-    endif
-  endif
-  return breakpoint_line
-endfunction
+" open all folds on fileopen:
+autocmd BufRead *.py silent! normal zR
 
-function! python#DelBreakpointLine()
-    let remove_pattern =  '^\s*'.escape(python#BreakpointLine(), '\\/.*$^~[]').'$'
-    let del_breakpoint_cmd = 'g/'.remove_pattern.'/d'
-    return del_breakpoint_cmd
-endfunction
-
-nmap <silent> <leader>bs O<C-r>=python#BreakpointLine()<cr><Esc>:w<bar>:noh<cr>
-noremap <leader>bd :exec python#DelBreakpointLine() <bar> noh<cr>
 "" PLUGIN config ##############################################################
 
 "" ALE:
@@ -76,9 +53,6 @@ let g:jedi#show_call_signatures = 2
 
 "" SimplyFold
 let g:SimpylFold_docstring_preview = 1
-
-" open all folds on fileopen:
-autocmd BufWinEnter *.py silent! zR
 
 " argwrap config
 nnoremap <silent> <leader>aw :ArgWrap<cr>
