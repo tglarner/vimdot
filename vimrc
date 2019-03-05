@@ -188,7 +188,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=80
 "" Map quit to normalmode q in help files
 augroup MapQuitInHelp
     autocmd! MapQuitInHelp
-    autocmd Filetype help nnoremap <buffer> q :q!<cr>
+    autocmd Filetype help,qf nnoremap <buffer> q :q!<cr>
 augroup END
 
 "" Use mouse even in terminal. This is neat for split resizing.
