@@ -35,6 +35,9 @@ endif
 
 call plug#begin(g:vimdir.'plugged')
 
+"" vim session management
+Plug 'tpope/vim-obsession'
+
 "" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
 Plug 'tglarner/molokai'
 
