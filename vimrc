@@ -67,6 +67,10 @@ Plug 'tpope/vim-fugitive'
 "" vim-test: Run your tests at the speed of thought
 Plug 'janko-m/vim-test'
 
+"" Debugger support
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'idanarye/vim-vebugger'
+
 "" LaTeX plugins --------------------------------------------------------------
 
 ""  LaTeX mode
