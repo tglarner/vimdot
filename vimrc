@@ -307,6 +307,15 @@ nmap <leader>gm :Gmove
 nmap <leader>gr :Gread
 nmap <leader>gw :Gwrite
 
+"" Grepper
+nnoremap <leader>Gg :Grepper -tool git<cr>
+nnoremap <leader>Ga :Grepper -tool ag<cr>
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+let g:grepper = {}
+let g:grepper.tools = ['ag', 'git', 'grep']
+
+
 "" CamelCaseMotion
 call camelcasemotion#CreateMotionMappings('<leader>')
 
