@@ -108,6 +108,8 @@ Plug 'ervandew/supertab'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 
 "" Text objects for python functions (af, if) and classes (ac, ic)
+"" as well as working section movements (for classes)
+"" and ]m movements (for methods or functions).
 Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python' }
 
 "" Improved folding
