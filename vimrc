@@ -188,8 +188,8 @@ augroup END
 "" Makefiles use tabs instead of spaces
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
-"" git commit messages:
-autocmd Filetype gitcommit setlocal spell textwidth=80
+"" git commit messages, email messages, etc.. :
+autocmd Filetype gitcommit,mail setlocal spell textwidth=75 colorcolumn=75
 
 "" Map quit to normalmode q in help files
 augroup MapQuitInHelp
