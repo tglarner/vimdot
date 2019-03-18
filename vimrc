@@ -161,8 +161,8 @@ set ls=2                          "" Always show d$filename edited.
 set noshowmode                    "" Not needed with airline: Don't show mode.
 set nostartofline                 "" Keep horz cursor pos for vert. movement.
 set showmatch                     "" Show matching braces.
-set wildmode=longest,list,full    "" Switch to better tab completion
-set wildmenu
+set wildmenu                      "" Switch to better tab completion
+set wildmode=longest:list,full
 set autoindent                    "" Automatic indenting.
 set backspace=indent,eol,start    "" Natural backspace in insert mode.
 set expandtab shiftwidth=2 softtabstop=2
@@ -225,6 +225,11 @@ autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 
 "" keyboard mappings ##########################################################
 
+"" Use gb abd gB to cycle through open buffers
+nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
+nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
+nnoremap <leader>bb :buffer *
+
 "" Remap leader to space (Note: This affects MANY mappings!)
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
@@ -282,6 +287,7 @@ let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " unicode symbols
 if !exists('g:airline_symbols')
