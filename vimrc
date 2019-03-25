@@ -310,8 +310,8 @@ let g:airline_symbols.whitespace = '☲'
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gl :Glog<cr>
-nmap <leader>gpu :Gpush
-nmap <leader>gpl :Gpull
+nmap <leader>gP :Gpush
+nmap <leader>gp :Gpull
 nmap <leader>gc :Gcommit
 nmap <leader>gt :Gtabedit
 nmap <leader>ge :Gedit
