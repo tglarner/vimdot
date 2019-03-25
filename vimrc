@@ -316,8 +316,11 @@ nmap <leader>gc :Gcommit
 nmap <leader>gt :Gtabedit
 nmap <leader>ge :Gedit
 nmap <leader>gm :Gmove
-nmap <leader>gr :Gread
+nmap <leader>gR :Gread
 nmap <leader>gw :Gwrite
+"  Rewiew command:  https://stackoverflow.com/a/29454450
+command! Greview :Git! diff --staged
+nmap <leader>gr :Greview
 
 "" Grepper
 nnoremap <leader>Gg :Grepper -tool git<cr>
