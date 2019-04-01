@@ -238,6 +238,11 @@ endfunction
 "" But DO NOT do this for markdown since three spaces are a linebreak here.
 autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 
+"
+"" Close all buffers except the current one
+command! Bufonly silent :w | %bd | e#
+command! Bonly Bufonly
+
 "" keyboard mappings ##########################################################
 
 "" Use gb abd gB to cycle through open buffers
