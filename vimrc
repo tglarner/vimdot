@@ -259,7 +259,8 @@ let mapleader = "\<Space>"
 "" Use gb abd gB to cycle through open buffers
 nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
 nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
-nnoremap <leader>bb :buffer *
+"" open buffer from wildmenu
+nnoremap <leader>ob :buffer *
 "" close current buffer while keeping the window open
 nnoremap <leader>cb :Bclose<cr>
 
