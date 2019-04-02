@@ -78,21 +78,21 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 
 "" Mapping plugins ------------------------------------------------------------
 
-""" Repeat the last compound mapping with . operator
+""" Repeat the last compound mapping with .
 ""  This is useful for plugin mappings and user-defined mappings
 Plug 'tpope/vim-repeat'
 
-"" Easily modify surroundings: parens, braces, brackets, quotes, tags
+"" Easily modify surroundings: parentheses, braces, brackets, quotes, tags
 ""  This provides the verbs cs, ds, ys (change, delete, yank surrounding)
 ""  and the noun (text object) t for tag
 Plug 'tpope/vim-surround'
 
-"" Easily comment out lines with keymapping
+"" Easily comment out lines with key mapping
 Plug 'tpope/vim-commentary'
 
 "" Support CamelCase and snake_case motion objects
-""  uses <leader>w as subword noun and allows all parts of
-""  ThisIdentifierTypicalForJava or this_function_name to be navigatable.
+""  uses <leader>w as sub-word noun and allows all parts of
+""  ThisIdentifierTypicalForJava or this_function_name to be navigable.
 Plug 'bkad/CamelCaseMotion'
 
 "" Indent objects just right for python
@@ -245,14 +245,14 @@ command! Bonly Bufonly
 
 "" keyboard mappings ##########################################################
 
+"" Remap leader to space (Note: This affects MANY mappings!)
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
+
 "" Use gb abd gB to cycle through open buffers
 nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
 nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
 nnoremap <leader>bb :buffer *
-
-"" Remap leader to space (Note: This affects MANY mappings!)
-nnoremap <Space> <Nop>
-let mapleader = "\<Space>"
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
