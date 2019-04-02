@@ -288,7 +288,7 @@ cnoremap w!! w !sudo tee > /dev/null % <cr>
 "" bclose
 "" remove default mapping <leader>bd since it forces operator-pending mode
 "" for <leader>b, which is backwards subword movement in CamelCaseMotion
-g:bclose_no_plugin_maps = 0
+let g:bclose_no_plugin_maps = 0
 "" use <leader>cb instead, since <leader>c is not used by any plugin.
 nnoremap <leader>cb :Bclose<cr>
 
