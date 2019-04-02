@@ -38,6 +38,9 @@ call plug#begin(g:vimdir.'plugged')
 "" vim session management
 Plug 'tpope/vim-obsession'
 
+"" Close buffers without closing windows with Bclose
+Plug 'rbgrouleff/bclose.vim'
+
 "" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
 Plug 'tglarner/molokai'
 
@@ -257,6 +260,8 @@ let mapleader = "\<Space>"
 nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
 nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
 nnoremap <leader>bb :buffer *
+"" close current buffer while keeping the window open
+nnoremap <leader>cb :Bclose<cr>
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
