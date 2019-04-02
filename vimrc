@@ -256,7 +256,7 @@ command! Bonly Bufonly
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
-"" Use gb abd gB to cycle through open buffers
+"" Use gb and gB to cycle through open buffers
 nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
 nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
 "" open buffer from wildmenu
@@ -273,11 +273,11 @@ nnoremap <leader><cr> o<Esc>
 " Toggle search highlight
 nnoremap <silent><expr> <Leader>h (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
-" Allow saving of files as sudo when forgotten to start vim using sudo.
+" Allow saving of files as root when forgotten to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null % <cr>
 
 "" PLUGIN-specific config and key mappings ####################################
-"" Note: plugin config for python-specific plugins is in ftplugin/python.vim
+"" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
 
 "" NERDTree
 map <leader>N :NERDTreeToggle<CR>
