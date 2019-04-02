@@ -139,8 +139,8 @@ call plug#end()
 "" Syntax highlighting, but only for color terminals.
 if &t_Co > 1
   syntax enable
-  "" Molokai colorscheme
-  ""  Note: The variables have to be set before setting the colorscheme
+  "" Molokai color scheme
+  ""  Note: The variables have to be set before setting the color scheme
   ""        to take effect
   let g:molokai_original = 1
   let g:rehash256 = 1
@@ -245,7 +245,7 @@ endfunction
 "" But DO NOT do this for markdown since three spaces are a linebreak here.
 autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 
-"
+
 "" Close all buffers except the current one
 command! Bufonly silent :w | %bd | e#
 command! Bonly Bufonly
