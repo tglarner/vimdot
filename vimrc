@@ -260,6 +260,9 @@ nnoremap <leader><Space> za
 " Add newlines without insert mode.
 nnoremap <leader><cr> o<Esc>
 
+" Toggle search highlight
+nnoremap <silent><expr> <Leader>h (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
+
 " Allow saving of files as sudo when forgotten to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null % <cr>
 
