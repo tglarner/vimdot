@@ -95,6 +95,10 @@ Plug 'tpope/vim-commentary'
 ""  ThisIdentifierTypicalForJava or this_function_name to be navigable.
 Plug 'bkad/CamelCaseMotion'
 
+"" repeatable motions: Repeat last motion with
+"" <C-h>: backward / <C-l>: forward
+Plug 'vim-scripts/repeatable-motions.vim'
+
 "" Indent objects just right for python
 ""  provides ii, ai, iI, aI text objects for Indentations
 Plug 'michaeljsmith/vim-indent-object'
