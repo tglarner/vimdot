@@ -261,8 +261,6 @@ nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
 nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
 "" open buffer from wildmenu
 nnoremap <leader>ob :buffer *
-"" close current buffer while keeping the window open
-nnoremap <leader>cb :Bclose<cr>
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
@@ -286,6 +284,13 @@ cnoremap w!! w !sudo tee > /dev/null % <cr>
 
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
+
+"" bclose
+"" remove default mapping <leader>bd since it forces operator-pending mode
+"" for <leader>b, which is backwards subword movement in CamelCaseMotion
+g:bclose_no_plugin_maps = 0
+"" use <leader>cb instead, since <leader>c is not used by any plugin.
+nnoremap <leader>cb :Bclose<cr>
 
 "" NERDTree
 map <leader>N :NERDTreeToggle<CR>
