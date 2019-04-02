@@ -282,7 +282,7 @@ endfunction
 nnoremap <silent> <Leader>h :call ToggleSearchHighlight()<cr>
 
 " Allow saving of files as root when forgotten to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null % <cr>
+cnoremap w!! w !sudo tee > /dev/null % <cr>
 
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
