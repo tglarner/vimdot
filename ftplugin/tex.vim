@@ -8,6 +8,7 @@ set colorcolumn= 		" colorcolumn is not useful here
 set spell
 set spelllang=en_us,de_de
 
+set expandtab shiftwidth=2 softtabstop=2
 "" PLUGIN config ##############################################################
 
 "" vimtex
