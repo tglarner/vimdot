@@ -74,6 +74,9 @@ Plug 'janko-m/vim-test'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'idanarye/vim-vebugger'
 
+"" Asynchronous invocation of make with :Make[!]
+Plug 'tpope/vim-dispatch'
+
 "" LaTeX plugins --------------------------------------------------------------
 
 ""  LaTeX mode
@@ -371,6 +374,23 @@ nmap <leader>gw :Gwrite
 "  Rewiew command:  https://stackoverflow.com/a/29454450
 command! Greview :Git! diff --staged
 nmap <leader>gr :Greview
+
+"" vim-dispatch
+let g:make_target = 'all'
+function!GetMakeTarget()
+  if exists("make_target")
+    return make_target
+  else
+    return g:make_target
+  endif
+endfunction
+nnoremap <leader>mt :exec 'Make! ' . GetMakeTarget()<cr>
+nnoremap <leader>ma :Make!<cr>
+nnoremap <leader>mc :Make! clean<cr>
+nnoremap <leader>Mt :exec 'Make ' . GetMakeTarget()<cr>
+nnoremap <leader>Ma :Make<cr>
+nnoremap <leader>Mc :Make clean<cr>
+nnoremap <leader>oq :Copen<cr>
 
 "" Grepper
 nnoremap <leader>Gg :Grepper -tool git<cr>
