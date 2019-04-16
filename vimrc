@@ -292,6 +292,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
 
+"" latex
+let g:tex_flavor='latex'
+
 "" bclose
 "" remove default mapping <leader>bd since it forces operator-pending mode
 "" for <leader>b, which is backwards subword movement in CamelCaseMotion
