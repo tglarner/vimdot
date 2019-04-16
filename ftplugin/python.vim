@@ -15,6 +15,12 @@ setlocal autoindent
 setlocal fileformat=unix
 setlocal encoding=utf-8
 
+"" Set colorcolumn on line 80
+set colorcolumn=80                "" Highlight column 80 to dark grey
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+
 "" use pytest mapping for vim-test
 nmap <silent> <leader>ts :! clear && pytest .<cr>
 
