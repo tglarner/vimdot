@@ -6,6 +6,8 @@ set textwidth=0
 set wrapmargin=0
 set colorcolumn= 		" colorcolumn is not useful here
 set spell
+set spelllang=en_us,de_de
+
 "" PLUGIN config ##############################################################
 
 "" vimtex
