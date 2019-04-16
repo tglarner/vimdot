@@ -282,6 +282,10 @@ nnoremap <silent> <Leader>h :call ToggleSearchHighlight()<cr>
 " Allow saving of files as root when forgotten to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null % <cr>
 
+" Use %% to specify the directory of the current buffer
+"  (source: practical vim)
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
 
