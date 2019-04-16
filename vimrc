@@ -199,7 +199,8 @@ augroup END
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 "" git commit messages, email messages, etc.. :
-autocmd Filetype gitcommit,mail setlocal spell textwidth=75 colorcolumn=75
+autocmd Filetype gitcommit,mail setlocal spell spelllang=en_us,de_de
+  \ textwidth=75 colorcolumn=75
 
 "" Map quit to normalmode q in help files
 augroup MapQuitInHelp
