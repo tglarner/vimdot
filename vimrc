@@ -135,6 +135,12 @@ Plug 'w0rp/ale', { 'for': 'python' }
 "" Jedi: Static code analysis, goto  and autocompletion for python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
+"" Writing Style plugins ------------------------------------------------------
+
+"" Improve technical writing.
+"" See http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/
+Plug 'davidbeckingsale/writegood.vim', { 'for': ['tex', 'rst', 'markdown' ] }
+
 call plug#end()
 
 "" Set environment behavior ###################################################
@@ -287,8 +293,28 @@ nnoremap <silent> <Leader>h :call ToggleSearchHighlight()<cr>
 cnoremap w!! w !sudo tee > /dev/null % <cr>
 
 " Use %% to specify the directory of the current buffer
-"  (source: practical vim)
+"" (source: 'Practical Vim', Tip 41)
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+
+"" Search for current selection with * when in visual mode
+"" (source: 'Practical Vim', Tip 86)
+function! s:VSetSearch()
+  let temp = @s
+  normal! gv"sy
+  let @/ = '\V'.substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+xnoremap * :<C-u>call <SID>VSetSearch()<cr>/<C-R>=@/<cr><cr>
+xnoremap # :<C-u>call <SID>VSetSearch()<cr>?<C-R>=@/<cr><cr>
+
+
+"" Fix the & command: Repeat last substitution command with flags
+"" (source: 'Practical Vim', Tip 91)
+nnoremap & :&&<cr>
+xnoremap & :&&<cr>
+
 
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
