@@ -35,6 +35,9 @@ endif
 
 call plug#begin(g:vimdir.'plugged')
 
+"" vinegar: improved netrw with '-' keybinding
+Plug 'tpope/vim-vinegar'
+
 "" vim session management
 Plug 'tpope/vim-obsession'
 
@@ -55,10 +58,6 @@ Plug 'melonmanchan/vim-tmux-resizer'
 ""  Automatically switches to the next toplevel dir that contains a .git dir
 ""  when in a project but can be configured to look e.g. for Makefile, etc...
 Plug 'airblade/vim-rooter'
-
-"" NERDTree with git status flags
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "" vim-airline
 Plug 'vim-airline/vim-airline'
@@ -211,7 +210,12 @@ autocmd Filetype gitcommit,mail setlocal spell spelllang=en_us,de_de
 "" Map quit to normalmode q in help files
 augroup MapQuitInHelp
     autocmd! MapQuitInHelp
-    autocmd Filetype help,qf nnoremap <buffer> q :q!<cr>
+    autocmd Filetype help,qf nnoremap <buffer> qq :q!<cr>
+augroup END
+
+augroup MapQuitInNetrw
+    autocmd! MapQuitInNetrw
+    autocmd Filetype netrw nnoremap <buffer> qq <C-^>
 augroup END
 
 " Taken from $VIMRUNTIME/defaults.vim:
