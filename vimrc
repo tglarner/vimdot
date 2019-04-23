@@ -155,10 +155,10 @@ if &t_Co > 1
   colorscheme molokai
 endif
 
-"no need to be compatible with vi and lose features.
+"" Remove vi backwards compatibility (enables some vim features)
 set nocompatible
 
-"" Set update time to 750 ms , convenient for taglist.vim.
+"" Set update time to 750 ms, convenient for taglist.vim.
 set updatetime=750
 
 "" Set wait times between...
@@ -168,12 +168,12 @@ set ttimeoutlen=10                "" key code parts of terminal key transmission
 set wmh=0                         "" Do not show any line of minimized windows
 set splitbelow splitright         "" Natural splits
 set noswapfile nobackup nowb      "" Disable any swap and backup files
-set showcmd                       " show command info (e.g. leader key)
-set hlsearch incsearch ignorecase " nicer search
+set showcmd                       "" show command info (e.g. leader key)
+set hlsearch incsearch ignorecase "" nicer search
 set textwidth=80                  "" static text width inc. static wrap
 set nowrap                        "" Do not break long lines.
 set number relativenumber         "" Show hybrid line numbers.
-set ls=2                          "" Always show d$filename edited.
+set ls=2                          "" Always show status line.
 set noshowmode                    "" Not needed with airline: Don't show mode.
 set nostartofline                 "" Keep horz cursor pos for vert. movement.
 set showmatch                     "" Show matching braces.
