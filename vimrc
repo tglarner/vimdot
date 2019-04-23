@@ -161,8 +161,9 @@ set nocompatible
 "" Set update time to 750 ms , convenient for taglist.vim.
 set updatetime=750
 
-"" After this many msecs do not imap.
-set timeoutlen=500
+"" Set wait times between...
+set timeoutlen=500                "" keys of a mapping
+set ttimeoutlen=10                "" key code parts of terminal key transmission
 
 set wmh=0                         "" Do not show any line of minimized windows
 set splitbelow splitright         "" Natural splits
