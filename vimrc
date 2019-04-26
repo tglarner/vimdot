@@ -289,7 +289,8 @@ let mapleader = "\<Space>"
 nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
 nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
 "" open buffer from wildmenu
-nnoremap <leader>ob :buffer *
+set wildcharm=<C-z>
+nnoremap <leader>ob :buffer<Space><C-z>
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
