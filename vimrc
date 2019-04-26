@@ -211,7 +211,7 @@ autocmd Filetype gitcommit,mail setlocal spell spelllang=en_us,de_de
 "" Map quit to normalmode q in help files
 augroup MapQuitInHelp
     autocmd! MapQuitInHelp
-    autocmd Filetype help,qf nnoremap <buffer> qq :q!<cr>
+    autocmd Filetype help,qf,vim nnoremap <buffer> qq :q!<cr>
 augroup END
 
 augroup MapQuitInNetrw
