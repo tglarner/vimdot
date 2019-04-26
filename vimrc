@@ -286,8 +286,10 @@ nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
 "" Use gb and gB to cycle through open buffers
-nnoremap gb :<C-U>execute v:count1.'bnext'<cr>
-nnoremap gB :<C-U>execute v:count1.'bprevious'<cr>
+"" (aliases for unimpaired mappings)
+nmap gb ]b
+nmap gB [b
+
 "" open buffer from wildmenu
 set wildcharm=<C-z>
 nnoremap <leader>ob :buffer<Space><C-z>
