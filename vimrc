@@ -95,6 +95,9 @@ Plug 'tpope/vim-surround'
 "" Easily comment out lines with key mapping
 Plug 'tpope/vim-commentary'
 
+"" Paired mappings, mostly []-based
+Plug 'tpope/vim-unimpaired'
+
 "" Support CamelCase and snake_case motion objects
 ""  uses <leader>w as sub-word noun and allows all parts of
 ""  ThisIdentifierTypicalForJava or this_function_name to be navigable.
@@ -266,6 +269,13 @@ command! Bufonly silent :w | %bd | e#
 command! Bonly Bufonly
 
 "" keyboard mappings ##########################################################
+"" remap ö and ä in all but insert modes to [ and ]
+nmap ö [
+xmap ö [
+omap ö [
+nmap ä ]
+xmap ä ]
+omap ä ]
 
 "" unmap <F1> (hard-coded to help, very annoying, does not work in byobu)
 map <F1> <nop>
