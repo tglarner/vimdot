@@ -267,6 +267,10 @@ command! Bonly Bufonly
 
 "" keyboard mappings ##########################################################
 
+"" unmap <F1> (hard-coded to help, very annoying, does not work in byobu)
+map <F1> <nop>
+imap <F1> <nop>
+
 "" Remap leader to space (Note: This affects MANY mappings!)
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
