@@ -115,7 +115,7 @@ Plug 'michaeljsmith/vim-indent-object'
 "" command defined below: <leader>aw to toggle argument wrapping.
 Plug 'FooSoft/vim-argwrap'
 
-"" Use Tab for autocompletion
+"" Use Tab for auto completion
 Plug 'ervandew/supertab'
 
 "" Python plugins -------------------------------------------------------------
@@ -134,7 +134,7 @@ Plug 'tmhedberg/SimpylFold', {'for': 'python' }
 "" ALE: Asynchronous Lint Engine -> Syntax and style checks
 Plug 'w0rp/ale', { 'for': 'python' }
 
-"" Jedi: Static code analysis, goto  and autocompletion for python
+"" Jedi: Static code analysis, goto  and auto completion for python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 "" Writing Style plugins ------------------------------------------------------
