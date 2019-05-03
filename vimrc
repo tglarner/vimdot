@@ -168,6 +168,7 @@ set updatetime=750
 set timeoutlen=500                "" keys of a mapping
 set ttimeoutlen=10                "" key code parts of terminal key transmission
 
+set encoding=utf-8                "" This is the display encoding
 set wmh=0                         "" Do not show any line of minimized windows
 set splitbelow splitright         "" Natural splits
 set noswapfile nobackup nowb      "" Disable any swap and backup files
