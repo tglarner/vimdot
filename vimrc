@@ -277,6 +277,25 @@ nmap ä ]
 xmap ä ]
 omap ä ]
 
+"" remap double bracket movements (Work in progress!)
+nnoremap <silent><nowait> öö [[
+nnoremap <silent><nowait> öä []
+nnoremap <silent><nowait> äö ][
+nnoremap <silent><nowait> ää ]]
+
+function! MakeBracketMaps()
+    nnoremap <silent><nowait><buffer> öö :<c-u>exe 'normal '.v:count.'[['<cr>
+    nnoremap <silent><nowait><buffer> öä :<c-u>exe 'normal '.v:count.'[]'<cr>
+    nnoremap <silent><nowait><buffer> äö :<c-u>exe 'normal '.v:count.']['<cr>
+    nnoremap <silent><nowait><buffer> ää :<c-u>exe 'normal '.v:count.']]'<cr>
+endfunction
+
+augroup bracketmaps
+    autocmd!
+    autocmd FileType * call MakeBracketMaps()
+augroup END
+
+
 "" unmap <F1> (hard-coded to help, very annoying, does not work in byobu)
 map <F1> <nop>
 imap <F1> <nop>
