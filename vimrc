@@ -192,6 +192,7 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 
+set hidden                        "" Allow modified buffers without window
 "" Switch to absolute line number if in insert mode, out-of-focus
 "" or if the buffer is left e.g. by switching windows.
 "" source: https://jeffkreeftmeijer.com/vim-number/
