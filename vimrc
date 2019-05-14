@@ -311,8 +311,8 @@ nmap gb ]b
 nmap gB [b
 
 "" open buffer from wildmenu
-set wildcharm=<C-z>
-nnoremap <leader>ob :buffer<Space><C-z>
+set wildcharm=<C-Z>
+nnoremap <leader>ob :buffers<cr>:buffer<Space><C-Z>
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
