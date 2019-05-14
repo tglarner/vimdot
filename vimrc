@@ -182,6 +182,7 @@ set nostartofline                 "" Keep horz cursor pos for vert. movement.
 set showmatch                     "" Show matching braces.
 set wildmenu                      "" Switch to better tab completion
 set wildmode=longest:list,full
+set completeopt=longest,menuone   "" Improve completion menu behaviour
 set autoindent                    "" Automatic indenting.
 set backspace=indent,eol,start    "" Natural backspace in insert mode.
 set expandtab shiftwidth=2 softtabstop=2
