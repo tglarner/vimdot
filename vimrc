@@ -312,9 +312,12 @@ let mapleader = "\<Space>"
 nmap gb ]b
 nmap gB [b
 
-"" open buffer from wildmenu
+"" open named buffer from wildmenu
 set wildcharm=<C-Z>
-nnoremap <leader>ob :buffers<cr>:buffer<Space><C-Z>
+nnoremap <leader>onb :buffer<Space><C-Z>
+
+"" open buffer from bufer list
+nnoremap <leader>ob :buffers<cr>:buffer<Space>
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
