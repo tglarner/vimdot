@@ -454,6 +454,7 @@ command! Greview :Git! diff --staged
 nmap <leader>gr :Greview
 
 "" vim-dispatch
+let g:dispatch_no_maps = 1
 let g:make_target = 'all'
 function!GetMakeTarget()
   if exists("make_target")
