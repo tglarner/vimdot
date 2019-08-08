@@ -370,6 +370,9 @@ xnoremap & :&&<cr>
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
 
+"" supertab
+let g:SuperTabDefaultCompletionType = "context"
+
 "" latex
 let g:tex_flavor='latex'
 
