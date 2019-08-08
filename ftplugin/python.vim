@@ -41,13 +41,13 @@ let g:airline#extensions#ale#enabled = 1
 "" Jedi:
 let g:jedi#force_py_version = 3
 let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#goto_command = '<leader>d'
+let g:jedi#goto_assignments_command = '<leader>g'
+let g:jedi#goto_definitions_command = ''
+let g:jedi#documentation_command = 'K'
+let g:jedi#usages_command = '<leader>n'
+let g:jedi#completions_command = '<C-Space>'
+let g:jedi#rename_command = '<leader>r'
 "" disable annoying auto-completion of import in 'from ... import',
 "" often resulting in 'from ... import import' due to muscle memory.
 let g:jedi#smart_auto_mappings = 0

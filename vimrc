@@ -402,6 +402,7 @@ let g:tex_flavor='latex'
 "" remove default mapping <leader>bd since it forces operator-pending mode
 "" for <leader>b, which is backwards subword movement in CamelCaseMotion
 let g:bclose_no_plugin_maps = 0
+
 "" use <leader>cb instead, since <leader>c is not used by any plugin.
 nnoremap <leader>cb :Bclose<cr>
 
@@ -422,6 +423,7 @@ map <S-F10> <Nop>
 map <S-F11> <Nop>
 map <S-F12> <Nop>
 
+""vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <S-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <S-Down> :TmuxNavigateDown<cr>
@@ -445,7 +447,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tabs = 0
 let g:airline#extensions#tabline#show_buffers = 2
-
 let g:airline#extensions#head#enabled = 0
 
 " unicode symbols
