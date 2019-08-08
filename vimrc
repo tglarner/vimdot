@@ -383,6 +383,15 @@ xnoremap & :&&<cr>
 "" supertab
 let g:SuperTabDefaultCompletionType = "context"
 
+"" Ale
+" Keymaps to jump to next/prev warning/error
+" menmonic: *a*le next
+nmap <silent> <leader>an :ALENext<cr>
+nmap <silent> <leader>aN :ALEPrevious<cr>
+" menmonic: next/prev *e*rror
+nmap <silent> ]e :ALENext<cr>
+nmap <silent> [e :ALEPrevious<cr>
+
 "" latex
 let g:tex_flavor='latex'
 

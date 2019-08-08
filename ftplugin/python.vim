@@ -38,10 +38,6 @@ let g:ale_lint_on_text_changed = 'never'
 "" Python-specific airline config
 let g:airline#extensions#ale#enabled = 1
 
-" Keymaps to jump to next/prev warning/error
-nmap <silent> <leader>an :ALENext<cr>
-nmap <silent> <leader>aN :ALEPrevious<cr>
-
 "" Jedi:
 let g:jedi#force_py_version = 3
 let g:jedi#use_tabs_not_buffers = 1
