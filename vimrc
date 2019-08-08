@@ -393,10 +393,6 @@ let g:bclose_no_plugin_maps = 0
 "" use <leader>cb instead, since <leader>c is not used by any plugin.
 nnoremap <leader>cb :Bclose<cr>
 
-"" NERDTree
-map <leader>N :NERDTreeToggle<CR>
-autocmd FileType nerdtree set nonumber norelativenumber
-
 "" tmux stuff: This is configured to work with byobu default keybindings
 "" vim-tmux-navigator
 " Map Shift-Function key to nothing. This should fix weird behaviour when
