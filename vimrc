@@ -203,9 +203,11 @@ let toggle_ignore = ['nerdtree', 'help', 'fugitiveblame']
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave *
-          \ if index(toggle_ignore, &ft) < 0 |set relativenumber|endif
+          \ if &number && index(toggle_ignore, &ft) < 0 |
+          \   set relativenumber|endif
     autocmd BufLeave,FocusLost,InsertEnter *
-          \ if index(toggle_ignore, &ft) < 0 |set norelativenumber|endif
+          \ if &number && index(toggle_ignore, &ft) < 0 |
+          \   set norelativenumber|endif
 augroup END
 
 "" Makefiles use tabs instead of spaces
@@ -233,12 +235,10 @@ augroup END
 " likely a different one than last time).
 augroup vimStartup
   au!
-
   autocmd BufReadPost *
     \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
     \ |   exe "normal! g`\""
     \ | endif
-
 augroup END
 
 "" Use mouse even in terminal. This is neat for split resizing.
