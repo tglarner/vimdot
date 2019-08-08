@@ -321,6 +321,8 @@ imap <F1> <nop>
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
+"" Remap backspace to Ctrl-caret (i.e. go back to previous buffer)
+map <BS> <C-^>
 "" Use gb and gB to cycle through open buffers
 "" (aliases for unimpaired mappings)
 nmap gb ]b
