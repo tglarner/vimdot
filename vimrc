@@ -47,8 +47,9 @@ Plug 'rbgrouleff/bclose.vim'
 "" Molokai Colorscheme (but with ugly ErrorMsg and WarnMsg)
 Plug 'tglarner/molokai'
 
-"" Improved grepping
-Plug 'mhinz/vim-grepper'
+"" fzf: the fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 "" tmux support
 Plug 'christoomey/vim-tmux-navigator'
