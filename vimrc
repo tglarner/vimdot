@@ -228,7 +228,17 @@ augroup END
 "" Clear netrw buffers when they are not displayed anymore
 "" This solves problems with vinegar and hidden buffers
 autocmd FileType netrw setl bufhidden=wipe
+let g:netrw_fastbrowse = 0
 
+augroup netrw_buf_hidden_fix
+    autocmd!
+    " Set all non-netrw buffers to bufhidden=hide
+    autocmd BufWinEnter *
+                \  if &ft != 'netrw'
+                \|     set bufhidden=hide
+                \| endif
+augroup end
+"
 " Taken from $VIMRUNTIME/defaults.vim:
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid, when inside an event handler
