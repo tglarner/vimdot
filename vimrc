@@ -16,6 +16,10 @@ let g:vimrc = g:vimdir.'vimrc'
 "" VIM-PLUG ##############################################################
 "" add plugins with vim-plug
 "" Install new plugins by typing :PlugInstall after sourcing the vimrc file
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
 " Download vim-plug
 if empty(glob(g:vimdir.'autoload/plug.vim'))
