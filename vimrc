@@ -312,8 +312,8 @@ let mapleader = "\<Space>"
 map <BS> <C-^>
 "" Use gb and gB to cycle through open buffers
 "" (aliases for unimpaired mappings)
-nmap gb ]b
-nmap gB [b
+nnoremap <C-PageDown> :bnext<cr>
+nnoremap <C-PageUp> :bprevious<cr>
 
 "" open named buffer from wildmenu
 set wildcharm=<C-Z>
@@ -341,6 +341,14 @@ nnoremap <silent> <Leader>h :call ToggleSearchHighlight()<cr>
 
 " Allow saving of files as root when forgotten to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null % <cr>
+
+" Write and close buffer
+function! WriteAndCloseBuffer()
+  w
+  bd
+endfunction
+
+command! WC :call WriteAndCloseBuffer()
 
 " Use %% to specify the directory of the current buffer
 "" (source: 'Practical Vim', Tip 41)
