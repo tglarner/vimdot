@@ -240,7 +240,9 @@ augroup vimStartup
 augroup END
 
 "" Use mouse even in terminal. This is neat for split resizing.
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 set mouse=a
 
 "" Useful commands and functions #############################################
