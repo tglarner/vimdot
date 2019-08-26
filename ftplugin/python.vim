@@ -26,7 +26,6 @@ nmap <silent> <leader>ts :! clear && pytest .<cr>
 
 " open all folds on fileopen:
 autocmd BufRead *.py silent! normal zR
-
 "" PLUGIN config ##############################################################
 
 "" ALE:
@@ -36,7 +35,7 @@ let g:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1        "" let vim-lsc manage completion
 
-"" Python-specific airline config
+" "" Python-specific ALE airline config
 let g:airline#extensions#ale#enabled = 1
 
 "" SimplyFold

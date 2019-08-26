@@ -140,7 +140,7 @@ Plug 'dense-analysis/ale', { 'for': 'python' }
 
 "" Improve technical writing.
 "" See http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/
-Plug 'davidbeckingsale/writegood.vim', { 'for': ['tex', 'rst', 'markdown' ] }
+Plug 'davidbeckingsale/writegood.vim', { 'for': [ 'tex', 'rst', 'markdown' ] }
 
 call plug#end()
 
@@ -319,7 +319,7 @@ nmap gB [b
 set wildcharm=<C-Z>
 nnoremap <leader>onb :buffer<Space><C-Z>
 
-"" open buffer from bufer list
+"" open buffer from buffer list
 nnoremap <leader>ob :buffers<cr>:buffer<Space>
 
 "" toggle fold with <leader><space>, i.e. space twice
