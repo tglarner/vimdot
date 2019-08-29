@@ -67,7 +67,8 @@ Plug 'airblade/vim-rooter'
 "" vim-airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"
+
+"" IDE features ---------------------------------------------------------------
 "" git integration
 Plug 'tpope/vim-fugitive'
 
@@ -81,10 +82,9 @@ Plug 'idanarye/vim-vebugger'
 "" Asynchronous invocation of make with :Make[!]
 Plug 'tpope/vim-dispatch'
 
-"" LaTeX plugins --------------------------------------------------------------
+"" ALE: Asynchronous Lint Engine -> Syntax and style checks, language server
+Plug 'dense-analysis/ale'
 
-""  LaTeX mode
-Plug 'lervag/vimtex', { 'for': 'tex' }
 
 "" Mapping plugins ------------------------------------------------------------
 
@@ -133,8 +133,10 @@ Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python' }
 "" Improved folding
 Plug 'tmhedberg/SimpylFold', {'for': 'python' }
 
-"" ALE: Asynchronous Lint Engine -> Syntax and style checks, language server
-Plug 'dense-analysis/ale', { 'for': 'python' }
+"" LaTeX plugins --------------------------------------------------------------
+
+""  LaTeX mode
+Plug 'lervag/vimtex', { 'for': 'tex' }
 
 "" Writing Style plugins ------------------------------------------------------
 
@@ -247,7 +249,7 @@ set mouse=a
 
 "" Useful commands and functions #############################################
 
-""Source this vimrc file from wherever
+""Source/Edit this vimrc file from wherever
 command! Sorc :exec 'source '.g:vimrc
 command! Edrc :exec 'tabe  '.g:vimrc
 
@@ -266,7 +268,6 @@ endfunction
 
 "" But DO NOT do this for markdown since three spaces are a linebreak here.
 autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
-
 
 "" Close all buffers except the current one
 command! Bufonly silent :w | %bd | e#
@@ -380,15 +381,6 @@ xnoremap & :&&<cr>
 "" supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-"" Ale
-" Keymaps to jump to next/prev warning/error
-" menmonic: *a*le next
-nmap <silent> <leader>an :ALENext<cr>
-nmap <silent> <leader>aN :ALEPrevious<cr>
-" menmonic: next/prev *e*rror
-nmap <silent> ]e :ALENext<cr>
-nmap <silent> [e :ALEPrevious<cr>
-
 "" latex
 let g:tex_flavor='latex'
 
@@ -396,11 +388,28 @@ let g:tex_flavor='latex'
 "" remove default mapping <leader>bd since it forces operator-pending mode
 "" for <leader>b, which is backwards subword movement in CamelCaseMotion
 let g:bclose_no_plugin_maps = 0
-
 "" use <leader>cb instead, since <leader>c is not used by any plugin.
 nnoremap <leader>cb :Bclose<cr>
 
-"" tmux stuff: This is configured to work with byobu default keybindings
+"" CamelCaseMotion
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+"" vim-rooter: Switch to file directory for non-project files
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_silent_chdir = 1
+let g:rooter_use_lcd = 1
+let g:rooter_patterns = ['Makefile', '.git/']
+"" set mydir to directory of current buffer to make gf etc work
+let $mydir = expand('%:h').'/'
+
+"" vim-test
+nmap <silent> <leader>tv :TestVisit<cr>
+nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> <leader>ts :TestSuite<cr>
+
+"" tmux stuff ######################
+" This is configured to work with byobu default keybindings
+
 "" vim-tmux-navigator
 " Map Shift-Function key to nothing. This should fix weird behaviour when
 " working that causes vim to switch in ex mode when pressed.
@@ -432,6 +441,7 @@ nnoremap <silent> <M-S-Up>    :TmuxResizeUp<cr>
 nnoremap <silent> <M-S-Down>  :TmuxResizeDown<cr>
 nnoremap <silent> <M-S-Right> :TmuxResizeRight<cr>
 
+"" #####################
 
 "" airline #####################
 let g:airline_theme='molokai'
@@ -460,7 +470,7 @@ let g:airline_symbols.whitespace = '☲'
 
 "" ######################
 
-" vim-fugitive
+" vim-fugitive ######################
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gl :Glog<cr>
@@ -476,7 +486,7 @@ nmap <leader>gw :Gwrite
 command! Greview :Git! diff --staged
 nmap <leader>gr :Greview
 
-"" vim-dispatch
+"" vim-dispatch ######################
 let g:dispatch_no_maps = 1
 let g:make_target = 'all'
 function!GetMakeTarget()
@@ -494,27 +504,22 @@ nnoremap <leader>Ma :Make<cr>
 nnoremap <leader>Mc :Make clean<cr>
 nnoremap <leader>oq :Copen<cr>
 
-"" Grepper
-nnoremap <leader>Gg :Grepper -tool git<cr>
-nnoremap <leader>Ga :Grepper -tool ag<cr>
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
-let g:grepper = {}
-let g:grepper.tools = ['ag', 'git', 'grep']
+"" ######################
 
+"" ALE:  ######################
 
-"" CamelCaseMotion
-call camelcasemotion#CreateMotionMappings('<leader>')
+" Keymaps to jump to next/prev warning/error
+" menmonic: *a*le next
+nmap <silent> <leader>an :ALENext<cr>
+nmap <silent> <leader>aN :ALEPrevious<cr>
+" menmonic: next/prev *e*rror
+nmap <silent> ]e :ALENext<cr>
+nmap <silent> [e :ALEPrevious<cr>
 
-"" vim-rooter: Switch to file directory for non-project files
-let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_silent_chdir = 1
-let g:rooter_use_lcd = 1
-let g:rooter_patterns = ['Makefile', '.git/']
-"" set mydir to directory of current buffer to make gf etc work
-let $mydir = expand('%:h').'/'
+" let b:ale_linters = {'python': ['pydocstyle', 'pylint', 'pyls']}
+let b:ale_linters = {'python': ['pylint']}
+let b:ale_fixers = {'python': ['autopep8', 'isort']}
+let b:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
+let b:ale_lint_on_text_changed = 'never'
+let b:ale_completion_enabled = 0        "" let vim-lsc manage completion
 
-"" vim-test
-nmap <silent> <leader>tv :TestVisit<cr>
-nmap <silent> <leader>tf :TestFile<cr>
-nmap <silent> <leader>ts :TestSuite<cr>
