@@ -85,6 +85,22 @@ Plug 'tpope/vim-dispatch'
 "" ALE: Asynchronous Lint Engine -> Syntax and style checks, language server
 Plug 'dense-analysis/ale'
 
+"" deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+let g:deoplete#enable_at_startup = 1
+
+"" LanguageClient
+Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ })
 
 "" Mapping plugins ------------------------------------------------------------
 
@@ -523,3 +539,23 @@ let b:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
 let b:ale_lint_on_text_changed = 'never'
 let b:ale_completion_enabled = 0        "" let vim-lsc manage completion
 
+"  deoplete ######################
+" <TAB>: completion.
+inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
+"" LanguageClient-neovim ######################
+let g:LanguageClient_serverCommands = {
+  \ 'python': ['python', '-m', 'pyls'],
+  \ }
+let g:LanguageClient_diagnosticsEnable=0
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
