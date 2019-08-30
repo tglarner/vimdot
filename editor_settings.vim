@@ -48,6 +48,7 @@ hi Normal ctermbg=none
 hi NonText ctermbg=none
 
 set hidden                        "" Allow modified buffers without window
+
 "" Switch to absolute line number if in insert mode, out-of-focus
 "" or if the buffer is left e.g. by switching windows.
 "" source: https://jeffkreeftmeijer.com/vim-number/
@@ -63,11 +64,17 @@ augroup numbertoggle
 augroup END
 
 "" Makefiles use tabs instead of spaces
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+augroup makesettings
+  autocmd!
+  autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+augroup END
 
 "" git commit messages, email messages, etc.. :
-autocmd Filetype gitcommit,mail setlocal spell spelllang=en_us,de_de
-  \ textwidth=75 colorcolumn=75
+augroup spellft
+  autocmd!
+  autocmd Filetype gitcommit,mail setlocal spell spelllang=en_us,de_de
+    \ textwidth=75 colorcolumn=75
+augroup END
 
 "" Map quit to normalmode q in help files
 augroup MapQuitInHelp
