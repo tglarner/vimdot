@@ -13,8 +13,8 @@ else
 endif
 let g:vimrc = g:vimdir.'vimrc'
 
-exec 'source '.g:vimdir.'plugin_init.vim'
-exec 'source '.g:vimdir.'editor_settings.vim'
-exec 'source '.g:vimdir.'commands.vim'
-exec 'source '.g:vimdir.'keymaps.vim'
-exec 'source '.g:vimdir.'plugin_config.vim'
+runtime plugin_init.vim
+runtime editor_settings.vim
+runtime commands.vim
+runtime keymaps.vim
+runtime plugin_config.vim
