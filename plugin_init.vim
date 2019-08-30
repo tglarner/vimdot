@@ -79,7 +79,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
-let g:deoplete#enable_at_startup = 1
 
 "" LanguageClient
 Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
