@@ -25,7 +25,8 @@ hi NonText ctermbg=none
 nmap <silent> <leader>ts :! clear && pytest .<cr>
 
 " open all folds on fileopen:
-autocmd BufRead *.py silent! normal zR
+autocmd BufReadPost *.py silent! exec 'normal zR<cr>'
+
 "" PLUGIN config ##############################################################
 
 " Python-specific ALE airline config
