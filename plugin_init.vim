@@ -39,6 +39,8 @@ Plug 'tglarner/molokai'
 "" fzf: the fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+"" imporve fzf handling of ag command
+Plug 'jesseleite/vim-agriculture'
 
 "" tmux support
 Plug 'christoomey/vim-tmux-navigator'

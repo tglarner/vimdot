@@ -35,10 +35,13 @@ nmap <Leader>fL :Lines<CR>
 nmap <Leader>fm :Marks<CR>
 nmap <Leader>fH :Helptags!<CR>
 nmap <Leader>fc :Commands<CR>
-nmap <Leader>/ :Ag<Space>
 nmap <Leader>: :History:<CR>
 nmap <Leader>fM :Maps<CR>
 nmap <Leader>fs :Filetypes<CR>
+" extensions by vim-agriculture
+nmap <Leader>/ <Plug>AgRawSearch
+vmap <Leader>/ <Plug>AgRawVisualSelection<cr>
+nmap <Leader>* <Plug>AgRawWordUnderCursor<cr>
 
 "" tmux stuff ######################
 " This is configured to work with byobu default keybindings
