@@ -1,9 +1,6 @@
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
 
-"" supertab
-let g:SuperTabDefaultCompletionType = "context"
-
 "" latex
 let g:tex_flavor='latex'
 
@@ -86,9 +83,9 @@ let g:airline_symbols.paste = 'P'
 let g:airline_symbols.spell = 'S'
 let g:airline_symbols.whitespace = '☲'
 
-"" IDE Stuff ######################
+"" IDE stuff ######################
 
-"" vim-test
+"" vim-test ######################
 nmap <silent> <leader>tv :TestVisit<cr>
 nmap <silent> <leader>tf :TestFile<cr>
 nmap <silent> <leader>ts :TestSuite<cr>
