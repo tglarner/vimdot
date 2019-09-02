@@ -23,6 +23,7 @@ let g:rooter_patterns = ['Makefile', '.git/']
 let $mydir = expand('%:h').'/'
 
 "" fzf mappings ######################
+nmap <Leader>fzf :FZF ~<CR>
 nmap <Leader>ff :Files<CR>
 nmap <Leader>fg :GFiles<CR>
 nmap <Leader>fb :Buffers<CR>
