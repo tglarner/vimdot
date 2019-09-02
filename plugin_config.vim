@@ -22,6 +22,23 @@ let g:rooter_patterns = ['Makefile', '.git/']
 "" set mydir to directory of current buffer to make gf etc work
 let $mydir = expand('%:h').'/'
 
+"" fzf mappings ######################
+nmap <Leader>ff :Files<CR>
+nmap <Leader>fg :GFiles<CR>
+nmap <Leader>fb :Buffers<CR>
+nmap <Leader>fh :History<CR>
+nmap <Leader>ft :BTags<CR>
+nmap <Leader>fT :Tags<CR>
+nmap <Leader>fl :BLines<CR>
+nmap <Leader>fL :Lines<CR>
+nmap <Leader>fm :Marks<CR>
+nmap <Leader>fH :Helptags!<CR>
+nmap <Leader>fc :Commands<CR>
+nmap <Leader>/ :Ag<Space>
+nmap <Leader>: :History:<CR>
+nmap <Leader>fM :Maps<CR>
+nmap <Leader>fs :Filetypes<CR>
+
 "" tmux stuff ######################
 " This is configured to work with byobu default keybindings
 
