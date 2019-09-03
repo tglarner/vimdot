@@ -36,7 +36,8 @@ let mapleader = "\<Space>"
 
 "" Remap backspace to Ctrl-caret (i.e. go back to previous buffer)
 map <BS> <C-^>
-"" Use gb and gB to cycle through open buffers
+"
+"" Cycle through open buffers easier
 "" (aliases for unimpaired mappings)
 nnoremap <C-PageDown> :bnext<cr>
 nnoremap <C-PageUp> :bprevious<cr>
