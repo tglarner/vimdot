@@ -4,13 +4,6 @@
 "" latex
 let g:tex_flavor='latex'
 
-"" bclose
-"" remove default mapping <leader>bd since it forces operator-pending mode
-"" for <leader>b, which is backwards subword movement in CamelCaseMotion
-let g:bclose_no_plugin_maps = 0
-"" use <leader>cb instead, since <leader>c is not used by any plugin.
-nnoremap <leader>cb :Bclose<cr>
-
 "" CamelCaseMotion
 call camelcasemotion#CreateMotionMappings('g')
 
