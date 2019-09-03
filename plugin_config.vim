@@ -12,7 +12,7 @@ let g:bclose_no_plugin_maps = 0
 nnoremap <leader>cb :Bclose<cr>
 
 "" CamelCaseMotion
-call camelcasemotion#CreateMotionMappings('<leader>')
+call camelcasemotion#CreateMotionMappings('g')
 
 "" vim-rooter: Switch to file directory for non-project files
 let g:rooter_change_directory_for_non_project_files = 'current'
