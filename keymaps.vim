@@ -44,10 +44,10 @@ nnoremap <C-PageUp> :bprevious<cr>
 
 "" open named buffer from wildmenu
 set wildcharm=<C-Z>
-nnoremap <leader>onb :buffer<Space><C-Z>
+nnoremap <leader>bn :buffer<Space><C-Z>
 
 "" open buffer from buffer list
-nnoremap <leader>ob :buffers<cr>:buffer<Space>
+nnoremap <leader>bo :buffers<cr>:buffer<Space>
 
 "" toggle fold with <leader><space>, i.e. space twice
 nnoremap <leader><Space> za
