@@ -23,6 +23,6 @@ function! python_breakpoint#DelBreakpointLine()
     return del_breakpoint_cmd
 endfunction
 
-nmap <silent> <leader>bs O<C-r>=python_breakpoint#BreakpointLine()<cr><Esc>:w<bar>:noh<cr>
-noremap <leader>bd :exec python_breakpoint#DelBreakpointLine() <bar> noh<cr>
+nmap <silent> <leader>ds O<C-r>=python_breakpoint#BreakpointLine()<cr><Esc>:w<bar>:noh<cr>
+noremap <leader>dc :exec python_breakpoint#DelBreakpointLine() <bar> noh<cr>
 "" PLUGIN config ##############################################################
