@@ -1,6 +1,8 @@
 "" VIM-PLUG ##############################################################
 "" add plugins with vim-plug
 "" Install new plugins by typing :PlugInstall after sourcing the vimrc file
+
+"" This fucntion allows loading conditioned on variables.
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
