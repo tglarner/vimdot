@@ -100,9 +100,13 @@ let g:airline_symbols.whitespace = '☲'
 "" IDE stuff ######################
 
 "" vim-test ######################
-nmap <silent> <leader>tv :TestVisit<cr>
+let test#strategy = "dispatch"
+nmap <silent> <leader>tn :TestNearest<cr>
 nmap <silent> <leader>tf :TestFile<cr>
 nmap <silent> <leader>ts :TestSuite<cr>
+nmap <silent> <leader>tl :TestLast<cr>
+nmap <silent> <leader>tv :TestVisit<cr>
+
 
 " vim-fugitive ######################
 nmap <leader>gb :Gblame<cr>

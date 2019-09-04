@@ -21,11 +21,15 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 
-"" use pytest mapping for vim-test
+"" use pytest for vim-test
+let test#enabled_runners = ["python#pytest"]
 nmap <silent> <leader>ts :! clear && pytest .<cr>
 
 " open all folds on fileopen:
-autocmd BufReadPost *.py silent! exec 'normal zR<cr>'
+augroup openFolds
+  autocmd!
+  autocmd BufReadPost *.py silent! exec "normal zR"
+augroup END
 
 "" PLUGIN config ##############################################################
 
