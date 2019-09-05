@@ -82,11 +82,6 @@ augroup MapQuitInHelp
     autocmd Filetype help,qf,vim nnoremap <buffer> qq :q!<cr>
 augroup END
 
-augroup MapQuitInNetrw
-    autocmd! MapQuitInNetrw
-    autocmd Filetype netrw nnoremap <buffer> qq <C-^>
-augroup END
-
 " Taken from $VIMRUNTIME/defaults.vim:
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid, when inside an event handler
