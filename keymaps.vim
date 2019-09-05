@@ -33,8 +33,8 @@ map <BS> <C-^>
 "
 "" Cycle through open buffers easier
 "" (aliases for unimpaired mappings)
-nnoremap <C-PageDown> :bnext<cr>
-nnoremap <C-PageUp> :bprevious<cr>
+nnoremap <silent> <C-PageDown> :bnext<cr>
+nnoremap <silent> <C-PageUp> :bprevious<cr>
 
 "" open named buffer from wildmenu
 set wildcharm=<C-Z>
