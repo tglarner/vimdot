@@ -18,6 +18,7 @@ let $mydir = expand('%:h').'/'
 "" fzf mappings ######################
 nmap <Leader>fzf :FZF
 nmap <Leader>fzh :FZF ~<CR>
+nmap <Leader>fzw :FZF ~/workspace/<CR>
 nmap <Leader>ff :Files<CR>
 nmap <Leader>fg :GFiles<CR>
 nmap <Leader>fb :Buffers<CR>
