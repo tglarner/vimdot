@@ -30,11 +30,13 @@ let mapleader = "\<Space>"
 
 "" Remap backspace to Ctrl-caret (i.e. go back to previous buffer)
 map <BS> <C-^>
-"
+
 "" Cycle through open buffers easier
 "" (aliases for unimpaired mappings)
 nnoremap <silent> <C-PageDown> :bnext<cr>
 nnoremap <silent> <C-PageUp> :bprevious<cr>
+nnoremap <silent> <C-S-PageDown> gt
+nnoremap <silent> <C-S-PageUp> gT
 
 "" open named buffer from wildmenu
 set wildcharm=<C-Z>
