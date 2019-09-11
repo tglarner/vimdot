@@ -33,9 +33,6 @@ augroup END
 
 "" PLUGIN config ##############################################################
 
-" Python-specific ALE airline config
-let g:airline#extensions#ale#enabled = 1
-
 "" SimplyFold
 let g:SimpylFold_docstring_preview = 1
 
