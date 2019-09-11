@@ -1,4 +1,9 @@
 "" keyboard mappings ##########################################################
+
+"" Remap leader to space (Note: This affects MANY mappings!)
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
+
 "" remap ö and ä in all but insert modes to [ and ]
 nmap ö [
 xmap ö [
@@ -23,10 +28,6 @@ augroup END
 "" unmap <F1> (hard-coded to help, very annoying, does not work in byobu)
 map <F1> <nop>
 imap <F1> <nop>
-
-"" Remap leader to space (Note: This affects MANY mappings!)
-nnoremap <Space> <Nop>
-let mapleader = "\<Space>"
 
 "" Remap backspace to Ctrl-caret (i.e. go back to previous buffer)
 map <BS> <C-^>
