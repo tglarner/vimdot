@@ -1,4 +1,3 @@
-
 "" automatically set a breakpoint in front of the current line with F8
 function! python_breakpoint#BreakpointLine()
   let python_version = split(system('python --version'))[1]
@@ -23,6 +22,5 @@ function! python_breakpoint#DelBreakpointLine()
     return del_breakpoint_cmd
 endfunction
 
-nmap <silent> <leader>ds O<C-r>=python_breakpoint#BreakpointLine()<cr><Esc>:w<bar>:noh<cr>
+nmap <silent><leader>ds O<C-r>=python_breakpoint#BreakpointLine()<cr><Esc>:w<bar>:noh<cr>
 noremap <leader>dc :exec python_breakpoint#DelBreakpointLine() <bar> noh<cr>
-"" PLUGIN config ##############################################################
