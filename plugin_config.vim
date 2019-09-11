@@ -159,12 +159,13 @@ nmap <silent> ]e :ALENext<cr>
 nmap <silent> [e :ALEPrevious<cr>
 
 " let b:ale_linters = {'python': ['pydocstyle', 'pylint', 'pyls']}
-let b:ale_linters = {'python': ['pylint']}
-let b:ale_fixers = {'python': ['autopep8', 'isort']}
-let b:ale_python_pylint_options = expand('--rcfile $HOME/.pylintrc')
-let b:ale_lint_on_text_changed = 'never'
-let b:ale_completion_enabled = 0        "" let vim-lsc manage completion
-
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_fixers = {'python': ['autopep8', 'isort']}
+let g:ale_python_pylint_options = '--rcfile='.expand('$HOME/.pylintrc')
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_completion_enabled = 0        "" let vim-lsc manage completion
+let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
+"
 "  deoplete ######################
 " <TAB>: completion.
 let g:deoplete#enable_at_startup = 1
