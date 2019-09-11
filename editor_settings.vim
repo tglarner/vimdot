@@ -76,10 +76,11 @@ augroup spellft
     \ textwidth=75 colorcolumn=75
 augroup END
 
-"" Map quit to normalmode q in help files
+"" Map quit to normalmode qq in help, quickfix vim config and fugitive buffers
 augroup MapQuitInHelp
-    autocmd! MapQuitInHelp
-    autocmd Filetype help,qf,vim nnoremap <buffer> qq :q!<cr>
+  autocmd! MapQuitInHelp
+  autocmd Filetype help,qf,vim,fugitive*
+    \ nnoremap <buffer><silent> qq :q!<cr>
 augroup END
 
 " Taken from $VIMRUNTIME/defaults.vim:
