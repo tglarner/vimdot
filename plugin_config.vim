@@ -152,12 +152,9 @@ nnoremap <leader>oq :Copen<cr>
 "" ALE:  ######################
 
 " Keymaps to jump to next/prev warning/error
-" menmonic: *a*le next
-nmap <silent> <leader>an :ALENext<cr>
-nmap <silent> <leader>aN :ALEPrevious<cr>
 " menmonic: next/prev *e*rror
-nmap <silent> ]e :ALENext<cr>
-nmap <silent> [e :ALEPrevious<cr>
+nmap <silent> [e <Plug>(ale_previous_wrap)
+nmap <silent> ]e <Plug>(ale_next_wrap)
 
 " let b:ale_linters = {'python': ['pydocstyle', 'pylint', 'pyls']}
 let g:ale_linters = {'python': ['pylint']}
