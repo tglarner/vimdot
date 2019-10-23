@@ -77,10 +77,11 @@ augroup spellft
 augroup END
 
 "" Map quit to normalmode qq in help, quickfix vim config and fugitive buffers
+"" Note: Should be used only in read-only buffers since it shadows gqq
 augroup MapQuitInHelp
   autocmd! MapQuitInHelp
   autocmd Filetype help,qf,vim,fugitive*
-    \ nnoremap <buffer><silent> qq :q!<cr>
+    \ nnoremap <buffer><silent> gq :q!<cr>
 augroup END
 
 " Taken from $VIMRUNTIME/defaults.vim:
