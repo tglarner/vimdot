@@ -72,7 +72,7 @@ augroup END
 "" git commit messages, email messages, etc.. :
 augroup spellft
   autocmd!
-  autocmd Filetype gitcommit,mail setlocal spell spelllang=en_us,de_de
+  autocmd Filetype gitcommit,mail,rst setlocal spell spelllang=en_us,de_de
     \ textwidth=75 colorcolumn=75
 augroup END
 
