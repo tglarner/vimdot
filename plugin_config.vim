@@ -149,6 +149,56 @@ nnoremap <leader>Ma :Make all<cr>
 nnoremap <leader>Mc :Make clean<cr>
 nnoremap <leader>oq :Copen<cr>
 
+"" Vim Vebugger: ######################
+"  If you set|g:vebugger_leader| in your vimrc you'll get keymaps for the
+"  Vebugger commands. The keymaps all start with the leader you set, following
+"  with:
+"
+"  i      |:VBGstepIn|
+"  o      |:VBGstepOver|
+"  O      |:VBGstepOut|
+"  c      |:VBGcontinue|
+"
+"  b      |:VBGtoggleBreakpointThisLine|
+"  B      |:VBGclearBreakpints|
+"
+"  e      |:VBGevalWordUnderCursor| in normal mode
+"         |:VBGevalSelectedText| in select mode
+"  E      Prompt for an argument for |:VBGeval|
+"
+"  x      |:VBGexecute| current line in normal mode.
+"         |:VBGexecuteSelectedText| in select mode
+"  X      Prompt for an argument for |:VBGexecute|
+"
+"  t      |:VBGtoggleTerminalBuffer|
+"  r      Select mode only - |:VBGrawWriteSelectedText|
+"  R      Prompt for an argument for |:VBGrawWrite|
+let g:vebugger_leader = '<leader>d'
+" kill Vebugger and close Shell buffer
+nnoremap <silent> <leader>dk :VBGkill<CR><C-w>j:q!<CR>
+
+" map to launch appropriate debugger
+" <leader>dl   is for debugger launch
+" <leader>da   is for debugger launch with args
+augroup VebuggerLaunch
+  autocmd! VebuggerLaunch
+  autocmd Filetype python nmap <buffer> <leader>dl :VBGstartPDB %<CR>
+  autocmd Filetype python nmap <buffer> <leader>da :VBGstartPDB % [ARGS]
+
+  autocmd Filetype c,cpp nmap <buffer> <leader>dl :VBGstartGDB %<CR>
+  autocmd Filetype c,cpp nmap <buffer> <leader>da :VBGstartGDB % [ARGS]
+
+  autocmd Filetype d nmap <buffer> <leader>dl :VBGstartGDBforD %<CR>
+  autocmd Filetype d nmap <buffer> <leader>da :VBGstartGDBforD % [ARGS]
+augroup END
+
+augroup MapQuitInVebuggerShell
+  autocmd! MapQuitInVebuggerShell
+  autocmd BufEnter Vebugger:Shell
+    \ nnoremap <buffer><silent> gq :q!<cr>
+augroup END
+
+
 "" ALE:  ######################
 " Keymaps to jump to next/prev warning/error
 " menmonic: next/prev *e*rror
