@@ -1,21 +1,22 @@
 "" PLUGIN-specific config and key mappings ####################################
 "" Note: plugin config for language-specific plugins is in ftplugin/LANGUAGE.vim
 
-"" latex
+"" Latex: #####################
 let g:tex_flavor='latex'
 
-"" CamelCaseMotion
+"" CamelCaseMotion: #####################
 call camelcasemotion#CreateMotionMappings('g')
 
-"" vim-rooter: Switch to file directory for non-project files
+"" Vim Rooter: #####################
+" Switch to file directory for non-project files
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_silent_chdir = 1
 let g:rooter_use_lcd = 1
 let g:rooter_patterns = ['Makefile', '.git/']
-"" set mydir to directory of current buffer to make gf etc work
+" set mydir to directory of current buffer to make gf etc work
 let $mydir = expand('%:h').'/'
 
-"" fzf mappings ######################
+"" FZF Mappings: ######################
 nmap <Leader>fzf :FZF
 nmap <Leader>fzh :FZF ~<CR>
 nmap <Leader>fzw :FZF ~/workspace/<CR>
@@ -39,10 +40,9 @@ nmap <Leader>/ <Plug>AgRawSearch
 vmap <Leader>/ <Plug>AgRawVisualSelection<cr>
 nmap <Leader>* <Plug>AgRawWordUnderCursor<cr>
 
-"" tmux stuff ######################
+"" Tmux Stuff: ######################
 " This is configured to work with byobu default keybindings
 
-"" vim-tmux-navigator
 " Map Shift-Function key to nothing. This should fix weird behaviour when
 " working that causes vim to switch in ex mode when pressed.
 map <S-F1> <Nop>
@@ -58,7 +58,7 @@ map <S-F10> <Nop>
 map <S-F11> <Nop>
 map <S-F12> <Nop>
 
-""vim-tmux-navigator
+""Vim Tmux Navigator: #####################
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <S-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <S-Down> :TmuxNavigateDown<cr>
@@ -66,7 +66,7 @@ nnoremap <silent> <S-Up>  :TmuxNavigateUp<cr>
 nnoremap <silent> <S-Right> :TmuxNavigateRight<cr>
 nnoremap <silent> <S-F3>  :TmuxNavigatePrevious<cr>
 
-""vim-tmux-resizer
+""Vim Tmux Resizer: #####################
 let g:tmux_resizer_no_mappings = 0
 nnoremap <silent> <M-S-Left>  :TmuxResizeLeft<cr>
 nnoremap <silent> <M-S-Up>    :TmuxResizeUp<cr>
@@ -75,7 +75,7 @@ nnoremap <silent> <M-S-Right> :TmuxResizeRight<cr>
 
 "" #####################
 
-"" airline #####################
+"" Airline: #####################
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -101,9 +101,9 @@ let g:airline_symbols.paste = 'P'
 let g:airline_symbols.spell = 'S'
 let g:airline_symbols.whitespace = '☲'
 
-"" IDE stuff ######################
+"" IDE Stuff: ######################
 
-"" vim-test ######################
+"" Vim Test: ######################
 let test#strategy = "dispatch"
 nmap <silent> <leader>tn :TestNearest<cr>
 nmap <silent> <leader>tf :TestFile<cr>
@@ -113,7 +113,7 @@ nmap <silent> <leader>tv :TestVisit<cr>
 nmap <silent> <leader>td :Dispatch python -m doctest %<cr>
 
 
-" vim-fugitive ######################
+" Vim Fugitive: ######################
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gl :Glog<cr>
@@ -129,7 +129,7 @@ nmap <leader>gw :Gwrite
 command! Greview :Git! diff --staged
 nmap <leader>gr :Greview
 
-"" vim-dispatch ######################
+"" Vim Dispatch: ######################
 let g:dispatch_no_maps = 1
 let g:make_target = 'all'
 function!GetMakeTarget()
@@ -147,10 +147,7 @@ nnoremap <leader>Ma :Make<cr>
 nnoremap <leader>Mc :Make clean<cr>
 nnoremap <leader>oq :Copen<cr>
 
-"" ######################
-
 "" ALE:  ######################
-
 " Keymaps to jump to next/prev warning/error
 " menmonic: next/prev *e*rror
 nmap <silent> [e <Plug>(ale_previous_wrap)
@@ -172,13 +169,12 @@ let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
 let g:ale_sign_error = 'E '
 let g:ale_sign_warning = 'W '
 
-"  deoplete ######################
+"  Deoplete: ######################
 " <TAB>: completion.
 let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-"" LanguageClient-neovim ######################
+"" LanguageClient: ######################
 let g:LanguageClient_serverCommands = {
   \ 'python': ['python', '-m', 'pyls'],
   \ }
