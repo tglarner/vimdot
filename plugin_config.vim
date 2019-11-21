@@ -180,6 +180,12 @@ inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 let g:deoplete#auto_complete_delay=250  "delay in ms
 
 "" LanguageClient: ######################
+" If the language server commands do not work, pyls and/or the extensions
+" might not be installed properly. A working installation was:
+"   $> pip install mypy black
+"   $> pip install 'python-language-server[all]'
+" source:
+"   https://github.com/palantir/python-language-server/issues/359#issuecomment-527247569
 let g:LanguageClient_serverCommands = {
   \ 'python': ['python', '-m', 'pyls'],
   \ }
