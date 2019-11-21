@@ -200,3 +200,11 @@ nnoremap <silent> <leader>la :call LanguageClient_workspace_applyEdit()<CR>
 nnoremap <silent> <leader>lc :call LanguageClient#textDocument_completion()<CR>
 nnoremap <silent> <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <silent> <leader>lm :call LanguageClient_contextMenu()<CR>
+
+
+augroup CloseLCHoverBuffer
+  autocmd!
+  autocmd BufWinEnter,WinEnter __LanguageClient__
+    \ :nnoremap <buffer> <silent> gq :q!<CR>
+augroup END
+
