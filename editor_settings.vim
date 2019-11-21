@@ -27,8 +27,6 @@ set splitbelow splitright         "" Natural splits
 set noswapfile nobackup nowb      "" Disable any swap and backup files
 set showcmd                       "" show command info (e.g. leader key)
 set hlsearch incsearch ignorecase "" nicer search
-set textwidth=80                  "" static text width inc. static wrap
-set nowrap                        "" Do not break long lines.
 set number relativenumber         "" Show hybrid line numbers.
 set ls=2                          "" Always show status line.
 set noshowmode                    "" Not needed with airline: Don't show mode.
@@ -42,6 +40,8 @@ set backspace=indent,eol,start    "" Natural backspace in insert mode.
 set expandtab shiftwidth=2 softtabstop=2
 set signcolumn=yes                "" Always keep the gutter open.
 
+set textwidth=80                  "" static text width inc. static wrap
+set nowrap                        "" Do not break long lines.
 set colorcolumn=80                "" Highlight column 80 to dark grey
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 hi Normal ctermbg=none
