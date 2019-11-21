@@ -175,6 +175,10 @@ let g:ale_sign_warning = 'W '
 let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+" increase delay to fix race condition resulting in unwanted autocompletion
+" see https://github.com/Shougo/deoplete.nvim/issues/440 for details
+let g:deoplete#auto_complete_delay=250  "delay in ms
+
 "" LanguageClient: ######################
 let g:LanguageClient_serverCommands = {
   \ 'python': ['python', '-m', 'pyls'],
