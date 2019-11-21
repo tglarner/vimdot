@@ -155,14 +155,13 @@ nnoremap <leader>oq :Copen<cr>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
 
-" Problem: pyls can only be activated through linter, but then it has to be
-" used for linting
-" let b:ale_linters = {'python': ['pydocstyle', 'pylint', 'pyls']}
+" pyls can only be activated by using it as a linter source,
+" thus ALE is not used as language server client.
+let g:ale_completion_enabled = 0        "" let LanguageClient manage completion
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}
 let g:ale_python_pylint_options = '--rcfile='.expand('$HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_completion_enabled = 0        "" let vim-lsc manage completion
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'"
