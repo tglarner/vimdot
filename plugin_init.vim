@@ -83,6 +83,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+Plug 'deathlyfrantic/deoplete-spell'
 
 "" LanguageClient
 Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
