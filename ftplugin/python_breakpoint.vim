@@ -24,3 +24,5 @@ endfunction
 
 nmap <silent><leader>dps O<C-r>=python_breakpoint#BreakpointLine()<cr><Esc>:w<bar>:noh<cr>
 noremap <leader>dpc :exec python_breakpoint#DelBreakpointLine() <bar> noh<cr>
+"" run pytest with debugger
+nmap <silent> <leader>tb :exec '!python -m pytest -s --pdb --pdbcls=IPython.core.debugger:Pdb .'<cr>
