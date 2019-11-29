@@ -44,8 +44,8 @@ set textwidth=80                  "" static text width inc. static wrap
 set nowrap                        "" Do not break long lines.
 set colorcolumn=80                "" Highlight column 80 to dark grey
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
-hi Normal ctermbg=none
-hi NonText ctermbg=none
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
 
 set hidden                        "" Allow modified buffers without window
 
