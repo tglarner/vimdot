@@ -28,6 +28,9 @@ call plug#begin(g:vimdir.'plugged')
 
 "" vim-dirvish: non-buggy alternative to netrw and '-' binding works
 Plug 'justinmk/vim-dirvish'
+"" dirvish git integration
+Plug 'kristijanhusak/vim-dirvish-git'
+
 
 "" vim session management
 Plug 'tpope/vim-obsession'

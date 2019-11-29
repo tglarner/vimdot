@@ -7,6 +7,9 @@ let g:tex_flavor='latex'
 "" CamelCaseMotion: #####################
 call camelcasemotion#CreateMotionMappings('g')
 
+"" Vim Dirvish Git: #####################
+let g:dirvish_git_show_ignored = 1
+
 "" Vim Rooter: #####################
 " Switch to file directory for non-project files
 let g:rooter_change_directory_for_non_project_files = 'current'
