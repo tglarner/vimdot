@@ -31,6 +31,8 @@ Plug 'justinmk/vim-dirvish'
 "" dirvish git integration
 Plug 'kristijanhusak/vim-dirvish-git'
 
+"" vim unix command improvements
+Plug 'tpope/vim-eunuch'
 
 "" vim session management
 Plug 'tpope/vim-obsession'
