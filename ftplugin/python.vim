@@ -25,6 +25,8 @@ hi NonText ctermbg=none
 let test#python#runner = 'pytest'
 nmap <silent> <leader>ts :! clear && pytest .<cr>
 nmap <silent> <leader>td :w<cr>:Dispatch python -m pytest %<cr>
+nmap <silent> <leader>tc :w<cr>:Dispatch python -m pytest
+  \ -s --cov-config=.converagerc --cov-report term-missing --cov='.'<cr>
 
 " open all folds on fileopen:
 augroup openFolds
