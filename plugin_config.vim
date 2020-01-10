@@ -138,14 +138,14 @@ function!GetMakeTarget()
     return g:make_target
   endif
 endfunction
-nnoremap <leader>md :Make!<cr>
+nnoremap <leader>mm :Make!<cr>
 nnoremap <leader>mt :exec 'Make! ' . GetMakeTarget()<cr>
 nnoremap <leader>ma :Make! all<cr>
 nnoremap <leader>mc :Make! clean<cr>
-nnoremap <leader>Md :Make<cr>
-nnoremap <leader>Mt :exec 'Make ' . GetMakeTarget()<cr>
-nnoremap <leader>Ma :Make all<cr>
-nnoremap <leader>Mc :Make clean<cr>
+nnoremap <leader>MM :Make<cr>
+nnoremap <leader>MT :exec 'Make ' . GetMakeTarget()<cr>
+nnoremap <leader>MA :Make all<cr>
+nnoremap <leader>MC :Make clean<cr>
 nnoremap <leader>oq :Copen<cr>
 
 "" Vim Vebugger: ######################
