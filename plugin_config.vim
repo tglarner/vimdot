@@ -110,8 +110,7 @@ nmap <silent> <leader>tf :TestFile<cr>
 nmap <silent> <leader>ts :TestSuite<cr>
 nmap <silent> <leader>tl :TestLast<cr>
 nmap <silent> <leader>tv :TestVisit<cr>
-nmap <silent> <leader>td :Dispatch python -m doctest %<cr>
-
+" Refer to ftplugin/python*.vim for more mappings
 
 " Vim Fugitive: ######################
 nmap <leader>gb :Gblame<cr>

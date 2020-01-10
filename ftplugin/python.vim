@@ -24,7 +24,7 @@ hi NonText ctermbg=none
 "" use pytest for vim-test
 let test#python#runner = 'pytest'
 nmap <silent> <leader>ts :! clear && pytest .<cr>
-nmap <silent> <leader>td :Dispatch python -m doctest %<cr>
+nmap <silent> <leader>td :Dispatch python -m pytest %<cr>
 
 " open all folds on fileopen:
 augroup openFolds
