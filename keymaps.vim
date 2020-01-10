@@ -52,17 +52,6 @@ nnoremap <leader><Space> za
 " Add newlines without insert mode.
 nnoremap <leader><cr> o<Esc>
 
-" Toggle search highlight
-function!ToggleSearchHighlight()
-  if &hls && v:hlsearch
-    set nohls
-  else
-    set hls
-  endif
-endfunction
-
-nnoremap <silent> <Leader>h :call ToggleSearchHighlight()<cr>
-
 " Allow saving of files as root when forgotten to start vim using sudo.
 cnoremap w!! w !sudo tee > /dev/null % <cr>
 
