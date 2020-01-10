@@ -75,9 +75,17 @@ augroup END
 "" git commit messages, email messages, etc.. :
 augroup spellft
   autocmd!
-  autocmd Filetype gitcommit,mail,rst setlocal spell spelllang=en_us,de_de
+  autocmd Filetype gitcommit,rst setlocal spell spelllang=en_us,de_de
     \ textwidth=75 colorcolumn=75
 augroup END
+
+"" email
+augroup emailEdit
+  autocmd!
+  autocmd Filetype mail setlocal spell spelllang=en_us,de_de
+    \ textwidth=72 colorcolumn=72
+augroup END
+
 
 "" Map quit to normalmode qq in help, quickfix vim config and fugitive buffers
 "" Note: Should be used only in read-only buffers since it shadows gqq
