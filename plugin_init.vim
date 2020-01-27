@@ -77,22 +77,18 @@ Plug 'tpope/vim-dispatch'
 "" ALE: Asynchronous Lint Engine -> Syntax and style checks, language server
 Plug 'dense-analysis/ale'
 
-"" deoplete
 if has('nvim')
+"" deoplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
-Plug 'deathlyfrantic/deoplete-spell'
+  Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+  Plug 'deathlyfrantic/deoplete-spell'
 
-"" LanguageClient
-Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ })
+  "" LanguageClient
+  Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ })
+endif
 
 "" Mapping plugins ------------------------------------------------------------
 
