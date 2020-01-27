@@ -209,6 +209,10 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 let g:ale_completion_enabled = 0        "" let LanguageClient manage completion
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}
+" Assumes that a .pylintrc file is present in the home directory.
+" If ALEInfo shows exit code 1 / NO OUTPUT RETURNED!, this might be the reason.
+" When in  doubt create a default one with
+"   $> pylint --generate-rcfile > $HOME/.pylintrc
 let g:ale_python_pylint_options = '--rcfile='.expand('$HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
 
