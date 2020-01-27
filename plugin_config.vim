@@ -221,6 +221,8 @@ let g:ale_sign_warning = 'W '
 
 "  Deoplete: ######################
 " <TAB>: completion.
+" needs neovim package for python3:
+"   $> pip install neovim
 let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
