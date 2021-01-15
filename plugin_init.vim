@@ -124,6 +124,8 @@ Plug 'michaeljsmith/vim-indent-object'
 "" command defined below: <leader>aw to toggle argument wrapping.
 Plug 'FooSoft/vim-argwrap'
 
+Plug 'PeterRincker/vim-argumentative'
+
 "" Python plugins -------------------------------------------------------------
 
 "" Improved python indenting
