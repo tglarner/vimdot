@@ -150,4 +150,7 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 "" See http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/
 Plug 'davidbeckingsale/writegood.vim', { 'for': [ 'tex', 'rst', 'markdown' ] }
 
+"" Todo Lists  ----------------------------------------------------------------
+Plug 'aserebryakov/vim-todo-lists'
+
 call plug#end()
