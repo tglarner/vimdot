@@ -209,11 +209,21 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 " thus ALE is not used as language server client.
 let g:ale_completion_enabled = 0        "" let LanguageClient manage completion
 let g:ale_linters = {'python': ['pylint']}
-let g:ale_fixers = {'python': ['autopep8', 'isort']}
-" Assumes that a .pylintrc file is present in the home directory.
-" If ALEInfo shows exit code 1 / NO OUTPUT RETURNED!, this might be the reason.
-" When in  doubt create a default one with
-"   $> pylint --generate-rcfile > $HOME/.pylintrc
+let g:ale_fixers = {'python': ['black', 'isort']}
+" Notes about pylint to avoid being driven crazy in the Future:
+"     - Assumes that a .pylintrc file is present in the home directory.
+"       If ALEInfo shows exit code 1 / NO OUTPUT RETURNED!,
+"       this might be the reason.
+"       When in  doubt create a default one with
+"       $> pylint --generate-rcfile > $HOME/.pylintrc
+"     - pylint is not smart enough to respect venvs.
+"       If pylint reports import errors for custom installed packages,
+"       it most likely runs in the global environment. In this case,
+"       make sure that the desired environment is activated and perform
+"       $> python -m pip install --force pylint
+"       to explicitly install pylint in the current environment
+let g:ale_python_black_options = '-S'
+let g:ale_python_isort_options= '--use-parentheses --force-grid-wrap 3 --force-sort-within-sections'
 let g:ale_python_pylint_options = '--rcfile='.expand('$HOME/.pylintrc')
 let g:ale_lint_on_text_changed = 'never'
 
@@ -242,8 +252,8 @@ call deoplete#custom#option({
 "" LanguageClient: ######################
 " If the language server commands do not work, pyls and/or the extensions
 " might not be installed properly. A working installation was:
-"   $> pip install mypy black
-"   $> pip install 'python-language-server[all]'
+"   $> python -m pip install mypy black
+"   $> python -m pip install --force 'python-language-server[all]'
 " source:
 "   https://github.com/palantir/python-language-server/issues/359#issuecomment-527247569
 let g:LanguageClient_serverCommands = {
