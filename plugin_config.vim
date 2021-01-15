@@ -11,7 +11,7 @@ call camelcasemotion#CreateMotionMappings('g')
 " Switch to file directory for non-project files
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_silent_chdir = 1
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd ='lcd'
 let g:rooter_patterns = ['Makefile', '.git/', 'setup.py']
 " set mydir to directory of current buffer to make gf etc work
 let $mydir = expand('%:h').'/'
@@ -147,6 +147,7 @@ nnoremap <leader>MT :exec 'Make ' . GetMakeTarget()<cr>
 nnoremap <leader>MA :Make all<cr>
 nnoremap <leader>MC :Make clean<cr>
 nnoremap <leader>oq :Copen<cr>
+nnoremap <leader>ol :lopen<cr>
 
 "" Vim Vebugger: ######################
 "  If you set|g:vebugger_leader| in your vimrc you'll get keymaps for the
@@ -232,7 +233,11 @@ inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 " increase delay to fix race condition resulting in unwanted autocompletion
 " see https://github.com/Shougo/deoplete.nvim/issues/440 for details
-let g:deoplete#auto_complete_delay=250  "delay in ms
+" Pass a dictionary to set multiple options
+call deoplete#custom#option({
+\ 'auto_complete_delay': 250,
+\ 'smart_case': v:true,
+\ })
 
 "" LanguageClient: ######################
 " If the language server commands do not work, pyls and/or the extensions
