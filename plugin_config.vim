@@ -104,6 +104,7 @@ let g:airline_symbols.whitespace = '☲'
 "" IDE Stuff: ######################
 
 "" Vim Test: ######################
+" test strategy needs vim-dispatch
 let test#strategy = "dispatch"
 nmap <silent> <leader>tn :TestNearest<cr>
 nmap <silent> <leader>tf :TestFile<cr>
