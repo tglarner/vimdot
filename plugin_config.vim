@@ -114,7 +114,7 @@ nmap <silent> <leader>tv :TestVisit<cr>
 
 " Vim Fugitive: ######################
 nmap <leader>gb :Gblame<cr>
-nmap <leader>gs :Gstatus<cr>
+nmap <leader>gs :Git<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gP :Gpush
 nmap <leader>gp :Gpull
@@ -208,7 +208,7 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 " pyls can only be activated by using it as a linter source,
 " thus ALE is not used as language server client.
 let g:ale_completion_enabled = 0        "" let LanguageClient manage completion
-let g:ale_linters = {'python': ['pylint']}
+let g:ale_linters = {'python': ['pylint', 'vim-lsp']}
 let g:ale_fixers = {'python': ['black', 'isort']}
 " Notes about pylint to avoid being driven crazy in the Future:
 "     - Assumes that a .pylintrc file is present in the home directory.
@@ -234,6 +234,52 @@ let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
 let g:ale_sign_error = 'E '
 let g:ale_sign_warning = 'W '
 
+"" LanguageClient: vim-lsp and ALE ######################
+" If the language server commands do not work, pyls and/or the extensions
+" might not be installed properly. A working installation was:
+"   $> python -m pip install mypy black
+"   $> python -m pip install --force 'python-language-server[all]'
+" source:
+"   https://github.com/palantir/python-language-server/issues/359#issuecomment-527247569
+
+if executable('pyls')
+    " pip install python-language-server
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> <leader>ld <plug>(lsp-definition)
+    nmap <buffer> <leader>lt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>li <plug>(lsp-implementation)
+    nmap <buffer> <leader>ls <plug>(lsp-document-symbol-search)
+    nmap <buffer> <leader>lS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> <leader>lx <plug>(lsp-references)
+    nmap <buffer> <leader>lr <plug>(lsp-rename)
+    nmap <buffer> <leader>[l <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>]l <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    inoremap <buffer> <expr><leader><c-f> lsp#scroll(+4)
+    inoremap <buffer> <expr><leader><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that have the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
 "  Deoplete: ######################
 " <TAB>: completion.
 " needs neovim package for python3:
@@ -248,33 +294,4 @@ call deoplete#custom#option({
 \ 'auto_complete_delay': 250,
 \ 'smart_case': v:true,
 \ })
-
-"" LanguageClient: ######################
-" If the language server commands do not work, pyls and/or the extensions
-" might not be installed properly. A working installation was:
-"   $> python -m pip install mypy black
-"   $> python -m pip install --force 'python-language-server[all]'
-" source:
-"   https://github.com/palantir/python-language-server/issues/359#issuecomment-527247569
-let g:LanguageClient_serverCommands = {
-  \ 'python': ['python', '-m', 'pyls'],
-  \ }
-let g:LanguageClient_diagnosticsEnable=0
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <silent> <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <silent> <leader>lx :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <silent> <leader>lc :call LanguageClient#textDocument_completion()<CR>
-nnoremap <silent> <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <leader>lm :call LanguageClient_contextMenu()<CR>
-
-
-augroup CloseLCHoverBuffer
-  autocmd!
-  autocmd BufWinEnter,WinEnter __LanguageClient__
-    \ :nnoremap <buffer> <silent> gq :q!<CR>
-augroup END
 

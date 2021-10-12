@@ -74,21 +74,25 @@ Plug 'idanarye/vim-vebugger'
 "" Asynchronous invocation of make with :Make[!]
 Plug 'tpope/vim-dispatch'
 
+
+"" LANGUAGESERVER STUFF:
 "" ALE: Asynchronous Lint Engine -> Syntax and style checks, language server
 Plug 'dense-analysis/ale'
+
+"" Non-Annoying Language Client
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+"" Use ALE and vim-lsp with a single pyls instance
+Plug 'rhysd/vim-lsp-ale'
 
 if has('nvim')
 "" deoplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
   Plug 'deathlyfrantic/deoplete-spell'
-
-  "" LanguageClient
-  Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ })
 endif
+
+
 
 "" Mapping plugins ------------------------------------------------------------
 
