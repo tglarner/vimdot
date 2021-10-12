@@ -63,6 +63,8 @@ Plug 'vim-airline/vim-airline-themes'
 "" IDE features ---------------------------------------------------------------
 "" git integration
 Plug 'tpope/vim-fugitive'
+"" github integration, needs fugitive
+Plug 'tpope/vim-rhubarb'
 
 "" vim-test: Run your tests at the speed of thought
 Plug 'janko-m/vim-test'
