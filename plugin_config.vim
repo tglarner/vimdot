@@ -116,8 +116,8 @@ nmap <silent> <leader>tv :TestVisit<cr>
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gl :Glog<cr>
-nmap <leader>gP :Git push
-nmap <leader>gp :Git pull
+nmap <leader>gP :Git! push
+nmap <leader>gp :Git! pull
 nmap <leader>gc :Gcommit
 nmap <leader>gt :Gtabedit
 nmap <leader>ge :Gedit
