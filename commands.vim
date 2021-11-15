@@ -23,3 +23,13 @@ autocmd BufWrite * if &ft!~?'markdown'|:call DeleteTrailingWS()|endif
 "" Close all buffers except the current one
 command! Bufonly silent :w | %bd | e#
 command! Bonly Bufonly
+
+
+"" Condense multiple blank lines into a single one.
+"" This is useful if a compy of an Email needs to be reformatted.
+function! RemoveMultiBlanks()
+  call DeleteTrailingWS()
+  %s/\n\{3,}/\r\r/e
+endfunction
+
+command! RMMBlanks silent :call RemoveMultiBlanks()
