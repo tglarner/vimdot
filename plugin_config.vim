@@ -266,8 +266,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>[l <plug>(lsp-previous-diagnostic)
     nmap <buffer> <leader>]l <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
-    inoremap <buffer> <expr><leader><c-f> lsp#scroll(+4)
-    inoremap <buffer> <expr><leader><c-d> lsp#scroll(-4)
+    " inoremap <buffer> <expr><leader><c-f> lsp#scroll(+4)
+    " inoremap <buffer> <expr><leader><c-d> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -280,6 +280,8 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that have the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+let g:lsp_diagnostics_enabled = 0
 
 "  Deoplete: ######################
 " <TAB>: completion.
