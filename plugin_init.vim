@@ -29,6 +29,9 @@ call plug#begin(g:vimdir.'plugged')
 "" vim-dirvish: non-buggy alternative to netrw and '-' binding works
 Plug 'justinmk/vim-dirvish'
 
+"" Mappings to do file system manipulation in dirvish buffers
+Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
+
 "" vim unix command improvements
 Plug 'tpope/vim-eunuch'
 
