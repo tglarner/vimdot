@@ -116,13 +116,13 @@ nmap <silent> <leader>tv :TestVisit<cr>
 " Vim Fugitive: ######################
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
-nmap <leader>gl :Glog<cr>
+nmap <leader>gl :Gclog<cr>
 nmap <leader>gP :Git push
 nmap <leader>gp :Git pull
-nmap <leader>gc :Gcommit
+nmap <leader>gc :Git commit
 nmap <leader>gt :Gtabedit
 nmap <leader>ge :Gedit
-nmap <leader>gm :Gmove
+nmap <leader>gm :GMove
 nmap <leader>gR :Gread
 nmap <leader>gw :Gwrite
 "  Rewiew command:  https://stackoverflow.com/a/29454450
