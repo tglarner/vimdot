@@ -114,7 +114,7 @@ nmap <silent> <leader>tv :TestVisit<cr>
 " Refer to ftplugin/python*.vim for more mappings
 
 " Vim Fugitive: ######################
-nmap <leader>gb :Gblame<cr>
+nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gP :Git push
