@@ -83,8 +83,14 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#head#enabled = 0
+
 let g:airline#extensions#ale#enabled = 1
+
+let g:airline#extensions#fugitiveline#enabled = 1
+
+let g:airline#extensions#fzf#enabled = 1
+
+let g:airline#extensions#head#enabled = 0
 
 " unicode symbols
 if !exists('g:airline_symbols')
