@@ -215,8 +215,13 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 " pyls can only be activated by using it as a linter source,
 " thus ALE is not used as language server client.
 let g:ale_completion_enabled = 0        "" let LanguageClient manage completion
-let g:ale_linters = {'python': ['pylint', 'vim-lsp']}
-let g:ale_fixers = {'python': ['black', 'isort']}
+let g:ale_linters = {
+\  'python': ['pylint', 'vim-lsp'],
+\  'markdown': ['mdl'],
+\}
+let g:ale_fixers = {
+\  'python': ['black', 'isort'],
+\}
 " Notes about pylint to avoid being driven crazy in the Future:
 "     - Assumes that a .pylintrc file is present in the home directory.
 "       If ALEInfo shows exit code 1 / NO OUTPUT RETURNED!,
