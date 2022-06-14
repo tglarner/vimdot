@@ -116,6 +116,9 @@ Plug 'tpope/vim-commentary'
 "" Paired mappings, mostly []-based
 Plug 'tpope/vim-unimpaired'
 
+"" Add titlecase mappings (text object compatible). Defualt: gz, gzz
+Plug 'christoomey/vim-titlecase'
+
 "" Support CamelCase and snake_case motion objects
 ""  uses <leader>w as sub-word noun and allows all parts of
 ""  ThisIdentifierTypicalForJava or this_function_name to be navigable.
