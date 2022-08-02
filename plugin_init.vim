@@ -165,4 +165,7 @@ Plug 'davidbeckingsale/writegood.vim', { 'for': [ 'tex', 'rst', 'markdown' ] }
 "" Todo Lists  ----------------------------------------------------------------
 Plug 'aserebryakov/vim-todo-lists'
 
+"" JSON syntax highlight
+Plug 'elzr/vim-json'
+
 call plug#end()
