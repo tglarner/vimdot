@@ -145,6 +145,15 @@ function!GetMakeTarget()
     return g:make_target
   endif
 endfunction
+
+augroup LatexDispatch
+  au!
+  autocmd Filetype tex
+    \ if empty(glob("./Makefile"))
+    \ |   let b:dispatch = 'latexmk -pdf'
+    \ | endif
+augroup END
+
 nnoremap <leader>mm :Make!<cr>
 nnoremap <leader>mt :exec 'Make! ' . GetMakeTarget()<cr>
 nnoremap <leader>ma :Make! all<cr>
