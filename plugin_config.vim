@@ -109,16 +109,6 @@ let g:airline_symbols.whitespace = '☲'
 
 "" IDE Stuff: ######################
 
-"" Vim Test: ######################
-" test strategy needs vim-dispatch
-let test#strategy = "dispatch"
-nmap <silent> <leader>tn :TestNearest<cr>
-nmap <silent> <leader>tf :TestFile<cr>
-nmap <silent> <leader>ts :TestSuite<cr>
-nmap <silent> <leader>tl :TestLast<cr>
-nmap <silent> <leader>tv :TestVisit<cr>
-" Refer to ftplugin/python*.vim for more mappings
-
 " Vim Fugitive: ######################
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
@@ -168,6 +158,15 @@ nnoremap <leader>MF :Make %:t:r<cr>
 nnoremap <leader>mf :Make! %:t:r<cr>
 nnoremap <leader>MR :!./%:t:r<cr>
 
+"" Vim Test: ######################
+" test strategy needs vim-dispatch
+let test#strategy = "dispatch"
+nmap <silent> <leader>tn :TestNearest<cr>
+nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> <leader>ts :TestSuite<cr>
+nmap <silent> <leader>tl :TestLast<cr>
+nmap <silent> <leader>tv :TestVisit<cr>
+" Refer to ftplugin/python*.vim for more mappings
 
 "" Vim Vebugger: ######################
 "  If you set|g:vebugger_leader| in your vimrc you'll get keymaps for the
