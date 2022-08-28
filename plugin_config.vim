@@ -218,106 +218,90 @@ augroup MapQuitInVebuggerShell
 augroup END
 
 
-"" ALE:  ######################
-" Keymaps to jump to next/prev warning/error
-" menmonic: next/prev *e*rror
-nmap <silent> [e <Plug>(ale_previous_wrap)
-nmap <silent> ]e <Plug>(ale_next_wrap)
+if has('nvim')
+lua << EOC
+  --  nvim-lsp: ######################
+  -- config details: https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
+  -- more info: https://coffeeandcontemplation.dev/2021/01/10/language-server-in-vim/
+  require('lspconfig').pylsp.setup{}
+  require('lspconfig').ccls.setup{}
 
-" pyls can only be activated by using it as a linter source,
-" thus ALE is not used as language server client.
-let g:ale_completion_enabled = 0        "" let LanguageClient manage completion
-let g:ale_linters = {
-\  'python': ['pylint', 'vim-lsp'],
-\  'markdown': ['mdl'],
-\}
-let g:ale_fixers = {
-\  'python': ['black', 'isort'],
-\}
-" Notes about pylint to avoid being driven crazy in the Future:
-"     - Assumes that a .pylintrc file is present in the home directory.
-"       If ALEInfo shows exit code 1 / NO OUTPUT RETURNED!,
-"       this might be the reason.
-"       When in  doubt create a default one with
-"       $> pylint --generate-rcfile > $HOME/.pylintrc
-"     - pylint is not smart enough to respect venvs.
-"       If pylint reports import errors for custom installed packages,
-"       it most likely runs in the global environment. In this case,
-"       make sure that the desired environment is activated and perform
-"       $> python -m pip install --force pylint
-"       to explicitly install pylint in the current environment
-let g:ale_python_black_options = '-S'
-let g:ale_python_isort_options= '--use-parentheses --force-grid-wrap 3 --force-sort-within-sections'
-let g:ale_python_pylint_options = '--rcfile='.expand('$HOME/.pylintrc')
-let g:ale_lint_on_text_changed = 'never'
+  local opts = { noremap=true, silent=true }
+  -- display diagnostics as tooltip instead of virtual text:
+  vim.o.updatetime = 250
+  vim.diagnostic.config({
+        virtual_text = false,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+  })
+  -- vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'"
-let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
+  -- ALE-like jump to next/prev linter warning
+  vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
+  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
-let g:ale_sign_error = 'E '
-let g:ale_sign_warning = 'W '
+  -- lsp keymaps ported from vim-lsp config
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<leader>lx', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ls', vim.lsp.buf.document_symbol, bufopts)
+  vim.keymap.set('n', '<leader>lS', vim.lsp.buf.workspace_symbol, bufopts)
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>lA', vim.lsp.buf.range_code_action, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
-"" LanguageClient: vim-lsp and ALE ######################
-" If the language server commands do not work, pyls and/or the extensions
-" might not be installed properly. A working installation was:
-"   $> python -m pip install mypy black
-"   $> python -m pip install --force 'python-language-server[all]'
-" source:
-"   https://github.com/palantir/python-language-server/issues/359#issuecomment-527247569
+  --  nvim-lint: #####################
+  require('lint').linters_by_ft = {
+    python = {'pylint', 'pylsp'},
+    cpp = {'ccls'},
+  }
+EOC
+  " " Notes about pylint to avoid being driven crazy in the Future:
+  " "     - Assumes that a .pylintrc file is present in the home directory.
+  " "       If ALEInfo shows exit code 1 / NO OUTPUT RETURNED!,
+  " "       this might be the reason.
+  " "       When in  doubt create a default one with
+  " "       $> pylint --generate-rcfile > $HOME/.pylintrc
+  " "     - pylint is not smart enough to respect venvs.
+  " "       If pylint reports import errors for custom installed packages,
+  " "       it most likely runs in the global environment. In this case,
+  " "       make sure that the desired environment is activated and perform
+  " "       $> python -m pip install --force pylint
+  " "       to explicitly install pylint in the current environment
+  autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})
+  au BufWritePost lua require('lint').try_lint()
 
-if executable('pyls')
-    " pip install python-language-server
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
+  sign define LspDiagnosticsSignError text=🔴
+  sign define LspDiagnosticsSignWarning text=🟠
+  sign define LspDiagnosticsSignInformation text=🔵
+  sign define LspDiagnosticsSignHint text=🟢
+
+  "  Deoplete: ######################
+  " <TAB>: completion.
+  " needs neovim package for python3:
+  "   $> pip install neovim
+  let g:deoplete#enable_at_startup = 1
+  inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+  " increase delay to fix race condition resulting in unwanted autocompletion
+  " see https://github.com/Shougo/deoplete.nvim/issues/440 for details
+  " Pass a dictionary to set multiple options
+  call deoplete#custom#option({
+  \ 'auto_complete_delay': 250,
+  \ 'smart_case': v:true,
+  \ })
+
+
+  "  Deoplete-Cpp
+  " source: https://github.com/kiddos/deoplete-cpp
+  let g:deoplete#sources#cpp#standard = 17
+
 endif
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> <leader>ld <plug>(lsp-definition)
-    nmap <buffer> <leader>lt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>li <plug>(lsp-implementation)
-    nmap <buffer> <leader>ls <plug>(lsp-document-symbol-search)
-    nmap <buffer> <leader>lS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> <leader>lx <plug>(lsp-references)
-    nmap <buffer> <leader>lr <plug>(lsp-rename)
-    nmap <buffer> <leader>[l <plug>(lsp-previous-diagnostic)
-    nmap <buffer> <leader>]l <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    " inoremap <buffer> <expr><leader><c-f> lsp#scroll(+4)
-    " inoremap <buffer> <expr><leader><c-d> lsp#scroll(-4)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that have the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
-let g:lsp_diagnostics_enabled = 0
-
-"  Deoplete: ######################
-" <TAB>: completion.
-" needs neovim package for python3:
-"   $> pip install neovim
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-" increase delay to fix race condition resulting in unwanted autocompletion
-" see https://github.com/Shougo/deoplete.nvim/issues/440 for details
-" Pass a dictionary to set multiple options
-call deoplete#custom#option({
-\ 'auto_complete_delay': 250,
-\ 'smart_case': v:true,
-\ })
 

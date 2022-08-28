@@ -80,20 +80,18 @@ Plug 'idanarye/vim-vebugger'
 Plug 'tpope/vim-dispatch'
 
 
-"" LANGUAGESERVER STUFF:
-"" ALE: Asynchronous Lint Engine -> Syntax and style checks, language server
-Plug 'dense-analysis/ale'
-
-"" Non-Annoying Language Client
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-"" Use ALE and vim-lsp with a single pyls instance
-Plug 'rhysd/vim-lsp-ale'
-
+"" LANGUAGESERVER Autocomplete Linting:
+"" These plugins only work for neovim!
 if has('nvim')
-"" deoplete
+"" language server and liniting plugins
+  Plug 'neovim/nvim-lsp'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'mfussenegger/nvim-lint'
+"" deoplete autocompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'deoplete-plugins/deoplete-lsp'
   Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+  Plug 'Shougo/deoplete-clangx', { 'for': [ 'c', 'cpp' ] }
   Plug 'deathlyfrantic/deoplete-spell'
 endif
 
