@@ -149,6 +149,9 @@ Plug 'jeetsukumaran/vim-pythonsense', {'for': 'python' }
 "" Improved folding
 Plug 'tmhedberg/SimpylFold', {'for': 'python' }
 
+"" Cpp plugins
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': [ 'c', 'cpp' ] }
+
 "" LaTeX plugins --------------------------------------------------------------
 
 ""  LaTeX mode
