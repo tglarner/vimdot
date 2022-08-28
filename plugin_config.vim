@@ -164,6 +164,10 @@ nnoremap <leader>MA :Make all<cr>
 nnoremap <leader>MC :Make clean<cr>
 nnoremap <leader>oq :Copen<cr>
 nnoremap <leader>ol :lopen<cr>
+nnoremap <leader>MF :Make %:t:r<cr>
+nnoremap <leader>mf :Make! %:t:r<cr>
+nnoremap <leader>MR :!./%:t:r<cr>
+
 
 "" Vim Vebugger: ######################
 "  If you set|g:vebugger_leader| in your vimrc you'll get keymaps for the
