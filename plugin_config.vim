@@ -43,7 +43,7 @@ nmap <Leader>* <Plug>AgRawWordUnderCursor<cr>
 "" Tmux Stuff: ######################
 " This is configured to work with byobu default keybindings
 
-" Map Shift-Function key to nothing. This should fix weird behaviour when
+" Map Shift-Function key to nothing. Tis should fix weird behaviour when
 " working that causes vim to switch in ex mode when pressed.
 map <S-F1> <Nop>
 map <S-F2> <Nop>
