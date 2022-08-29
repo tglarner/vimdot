@@ -91,11 +91,11 @@ augroup emailEdit
 augroup END
 
 
-"" Map quit to normalmode qq in help, quickfix vim config and fugitive buffers
+"" Map quit to normalmode qq in various utility buffers
 "" Note: Should be used only in read-only buffers since it shadows gqq
 augroup MapQuitInHelp
   autocmd! MapQuitInHelp
-  autocmd Filetype help,qf,vim,fugitive*
+  autocmd Filetype help,qf,vim,vim-plug,fugitive*
     \ nnoremap <buffer><silent> gq :q!<cr>
 augroup END
 
