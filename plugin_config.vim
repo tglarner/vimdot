@@ -254,6 +254,13 @@ lua << EOC
   })
   -- vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
+  -- change gutter symbols for Errors, Warnings, Infos, Hints
+  local signs = { DiagnosticSignError= "🔴", DiagnosticSignWarn = "🟠",
+                  DiagnosticSignInfo = "🔵", DiagnosticSignHint = "🟢" }
+  for name, icon in pairs(signs) do
+    vim.fn.sign_define(name, {text = icon, texthl = name, numhl = name})
+  end
+
   -- ALE-like jump to next/prev linter warning
   local opts = { noremap=true, silent=true }
   vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
@@ -293,11 +300,6 @@ EOC
   " "       to explicitly install pylint in the current environment
   autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})
   au BufWritePost lua require('lint').try_lint()
-
-  sign define LspDiagnosticsSignError text=🔴
-  sign define LspDiagnosticsSignWarning text=🟠
-  sign define LspDiagnosticsSignInformation text=🔵
-  sign define LspDiagnosticsSignHint text=🟢
 
   "  Deoplete: ######################
   " <TAB>: completion.
