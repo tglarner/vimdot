@@ -85,3 +85,13 @@ xnoremap # :<C-u>call <SID>VSetSearch()<cr>?<C-R>=@/<cr><cr>
 "" (source: 'Practical Vim', Tip 91)
 nnoremap & :&&<cr>
 xnoremap & :&&<cr>
+
+"" Fix movement in :wrap buffers (e.g. tex):
+"" j and k move on visual lines (i.e. rows) instead of (logical) lines
+"" (source: https://blog.sanctum.geek.nz/category/vim/)
+nnoremap j gj
+nnoremap k gk
+"" but use gj, gk for movement based on (logical) lines:
+nnoremap gj j
+nnoremap gk k
+
