@@ -238,7 +238,6 @@ lua << EOC
 
   require('lspconfig').ccls.setup{}
 
-  local opts = { noremap=true, silent=true }
   -- display diagnostics as tooltip instead of virtual text:
   vim.o.updatetime = 250
   vim.diagnostic.config({
@@ -250,6 +249,7 @@ lua << EOC
   -- vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
   -- ALE-like jump to next/prev linter warning
+  local opts = { noremap=true, silent=true }
   vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
