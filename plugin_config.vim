@@ -219,11 +219,23 @@ augroup END
 
 
 if has('nvim')
+  let g:pylintrcpath = '--rcfile='.expand('$HOME/.pylintrc')
 lua << EOC
   --  nvim-lsp: ######################
   -- config details: https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
   -- more info: https://coffeeandcontemplation.dev/2021/01/10/language-server-in-vim/
-  require('lspconfig').pylsp.setup{}
+  require('lspconfig').pylsp.setup{ settings = { pylsp = {
+    plugins = {
+      pyflakes = { enabled = false, },
+      pycodestyle = { enabled = false, },
+      pydocstyle = { enabled = true, },
+      pylint = {
+        enabled = true,
+        args = { vim.api.nvim_eval('g:pylintrcpath'), }
+      },
+    }
+  } } }
+
   require('lspconfig').ccls.setup{}
 
   local opts = { noremap=true, silent=true }
@@ -258,10 +270,6 @@ lua << EOC
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
   --  nvim-lint: #####################
-  require('lint').linters_by_ft = {
-    python = {'pylint', 'pylsp'},
-    cpp = {'ccls'},
-  }
 EOC
   " " Notes about pylint to avoid being driven crazy in the Future:
   " "     - Assumes that a .pylintrc file is present in the home directory.
