@@ -220,10 +220,15 @@ augroup END
 
 if has('nvim')
   let g:pylintrcpath = '--rcfile='.expand('$HOME/.pylintrc')
+
 lua << EOC
   --  nvim-lsp: ######################
   -- config details: https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
+  -- https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
+  -- lsp linter config: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
   -- more info: https://coffeeandcontemplation.dev/2021/01/10/language-server-in-vim/
+
+  -- pylsp config: https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
   require('lspconfig').pylsp.setup{ settings = { pylsp = {
     plugins = {
       pyflakes = { enabled = false, },
@@ -236,6 +241,7 @@ lua << EOC
     }
   } } }
 
+  -- ccls config: https://github.com/MaskRay/ccls/wiki/nvim-lspconfig
   require('lspconfig').ccls.setup{}
 
   -- display diagnostics as tooltip instead of virtual text:
@@ -270,6 +276,8 @@ lua << EOC
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
   --  nvim-lint: #####################
+  -- not necessary for linters which are natively supported by the lsp
+  -- otherwise: https://github.com/mfussenegger/nvim-lint#customize-built-in-linter-parameters
 EOC
   " " Notes about pylint to avoid being driven crazy in the Future:
   " "     - Assumes that a .pylintrc file is present in the home directory.
