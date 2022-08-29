@@ -255,6 +255,7 @@ lua << EOC
   -- vim.keymap.set('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
   -- change gutter symbols for Errors, Warnings, Infos, Hints
+  -- source: https://github.com/neovim/neovim/issues/14295
   local signs = { DiagnosticSignError= "🔴", DiagnosticSignWarn = "🟠",
                   DiagnosticSignInfo = "🔵", DiagnosticSignHint = "🟢" }
   for name, icon in pairs(signs) do
