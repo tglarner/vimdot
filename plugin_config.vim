@@ -121,9 +121,9 @@ nmap <leader>ge :Gedit
 nmap <leader>gm :GMove
 nmap <leader>gR :Gread
 nmap <leader>gw :Gwrite
-"  Rewiew command:  https://stackoverflow.com/a/29454450
+"  Review command:  https://stackoverflow.com/a/29454450
 command! Greview :Git! diff --staged
-nmap <leader>gr :Greview
+nmap <leader>gr :Greview<cr>
 
 "" Vim Dispatch: ######################
 let g:dispatch_no_maps = 1
