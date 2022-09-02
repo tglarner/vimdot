@@ -286,6 +286,13 @@ lua << EOC
   --  nvim-lint: #####################
   -- not necessary for linters which are natively supported by the lsp
   -- otherwise: https://github.com/mfussenegger/nvim-lint#customize-built-in-linter-parameters
+  require('lint').linters_by_ft = {
+    cpp = {'cpplint',}
+  }
+  local cpplint = require('lint.linters.cpplint')
+  cpplint.args = {
+    '--filter=-legal/copyright',
+  }
 EOC
   " " Notes about pylint to avoid being driven crazy in the Future:
   " "     - Assumes that a .pylintrc file is present in the home directory.
