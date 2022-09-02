@@ -300,7 +300,11 @@ EOC
   " "       $> python -m pip install --force pylint
   " "       to explicitly install pylint in the current environment
   autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})
-  au BufWritePost lua require('lint').try_lint()
+
+  augroup RunLinter
+    autocmd!
+    autocmd BufRead,BufWritePost * lua require('lint').try_lint()
+  augroup END
 
   "  Deoplete: ######################
   " <TAB>: completion.
