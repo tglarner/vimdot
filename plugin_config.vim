@@ -323,6 +323,9 @@ EOC
     autocmd BufRead,BufWritePost * lua require('lint').try_lint()
   augroup END
 
+  " vim-lsp-cxx-highlight
+  let g:lsp_cxx_hl_use_text_props = 1
+
   "  Deoplete: ######################
   " <TAB>: completion.
   " needs neovim package for python3:

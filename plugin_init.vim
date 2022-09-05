@@ -87,6 +87,7 @@ if has('nvim')
   Plug 'neovim/nvim-lsp'
   Plug 'neovim/nvim-lspconfig'
   Plug 'mfussenegger/nvim-lint'
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
 "" deoplete autocompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-lsp'
