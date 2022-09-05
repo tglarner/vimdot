@@ -157,6 +157,7 @@ nnoremap <leader>ol :lopen<cr>
 nnoremap <leader>MF :Make %:t:r<cr>
 nnoremap <leader>mf :Make! %:t:r<cr>
 nnoremap <leader>MR :!./%:t:r<cr>
+nnoremap <leader>mr :!./%:t:r<cr>
 
 "" Vim Test: ######################
 " test strategy needs vim-dispatch
