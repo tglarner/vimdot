@@ -243,7 +243,16 @@ lua << EOC
   } } }
 
   -- ccls config: https://github.com/MaskRay/ccls/wiki/nvim-lspconfig
-  require('lspconfig').ccls.setup{}
+  require('lspconfig').ccls.setup{
+    init_options = {
+      highlight = {
+        lsRanges = true;
+      },
+      clang = {
+        extraArgs = {'-std=c++17'};
+      }
+    }
+  }
 
   -- display diagnostics as tooltip instead of virtual text:
   vim.o.updatetime = 250
