@@ -337,7 +337,7 @@ EOC
   " see https://github.com/Shougo/deoplete.nvim/issues/440 for details
   " Pass a dictionary to set multiple options
   call deoplete#custom#option({
-  \ 'auto_complete_delay': 250,
+  \ 'auto_complete_delay': 25,
   \ 'smart_case': v:true,
   \ })
 
