@@ -234,7 +234,7 @@ lua << EOC
     plugins = {
       pyflakes = { enabled = false, },
       pycodestyle = { enabled = false, },
-      pydocstyle = { enabled = true, },
+      pydocstyle = { enabled = false, },
       pylint = {
         enabled = true,
         args = { vim.api.nvim_eval('g:pylintrcpath'), }
