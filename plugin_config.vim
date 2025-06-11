@@ -288,9 +288,8 @@ lua << EOC
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ls', vim.lsp.buf.document_symbol, bufopts)
   vim.keymap.set('n', '<leader>lS', vim.lsp.buf.workspace_symbol, bufopts)
-  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, bufopts)
-  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>lA', vim.lsp.buf.range_code_action, bufopts)
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, bufopts)
+  vim.keymap.set({'v', 'n'}, '<leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 
   --  nvim-lint: #####################
